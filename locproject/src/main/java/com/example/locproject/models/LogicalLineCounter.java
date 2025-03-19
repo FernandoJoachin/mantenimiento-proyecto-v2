@@ -13,14 +13,6 @@ import com.example.locproject.interfaces.Counter;
  * method declarations, flow control structures, and try blocks.
  */
 public class LogicalLineCounter extends Counter {
-    /**
-     * Regular expression pattern used to match logical line constructs.
-     */
-    private Pattern pattern;
-    /**
-     * Matcher for evaluating patterns against each line.
-     */
-    private Matcher matcher;
 
     @Override
     public void count(String line) {
@@ -41,19 +33,19 @@ public class LogicalLineCounter extends Counter {
     private boolean isLogicalLine(String line) {
         line = line.trim();
 
-        this.pattern = Pattern.compile(
+        Pattern pattern = Pattern.compile(
             JavaRegexConstants.CLASS_INSTANTIATION_REGEX);
             
-        if (this.pattern.matcher(line).find()) {
+        if (pattern.matcher(line).find()) {
             return false;
         }
 
-        this.pattern = Pattern.compile(JavaRegexConstants.ELSE_IF_REGEX);
-        if (this.pattern.matcher(line).find()) {
+        pattern = Pattern.compile(JavaRegexConstants.ELSE_IF_REGEX);
+        if (pattern.matcher(line).find()) {
             return false;
         }
 
-        this.pattern = Pattern.compile(
+        pattern = Pattern.compile(
             JavaRegexConstants.STRUCT_DECLARATION_REGEX + 
             "|" +
             JavaRegexConstants.METHOD_DECLARATION_REGEX +
@@ -63,9 +55,9 @@ public class LogicalLineCounter extends Counter {
             JavaRegexConstants.TRY_DECLARATION_REGEX
         );
 
-        this.matcher = this.pattern.matcher(line);
+        Matcher matcher = pattern.matcher(line);
 
-        while (this.matcher.find()) {
+        while (matcher.find()) {
             return true;
         }
         

@@ -12,7 +12,7 @@ public class JavaRegexConstants {
      * Regular expression to match access modifiers (public, private, protected).
      * Example: "public", "private", "protected".
      */
-    public final static String ACCESS_MODIFIERS_REGEX = "((public|private|protected)\\s+)?";
+    public final static String ACCESS_MODIFIERS_REGEX = "((public|private|protected)\\s+)";
 
     /**
      * Regular expression to match data type declarations, including generics.
