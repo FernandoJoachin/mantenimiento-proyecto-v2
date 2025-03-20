@@ -1,8 +1,8 @@
-package com.example.locproject.models;
+package com.example.locproject.utils;
 
 import com.example.locproject.interfaces.Counter;
 
-public class PhysicalLineCounter extends Counter {
+public class PhysicalLineCounterUtil extends Counter {
     @Override
     public void count(String line) {
         if (!this.commentValidator.isComment(line) & !line.trim().isEmpty()) {

@@ -1,4 +1,4 @@
-package com.example.locproject.utils;
+package com.example.locproject.service;
 
 import java.io.FileNotFoundException;
 import java.util.Scanner;
@@ -7,9 +7,9 @@ import java.util.logging.Logger;
 import com.example.locproject.interfaces.Counter;
 import com.example.locproject.models.JavaClass;
 import com.example.locproject.models.JavaProgram;
-import com.example.locproject.models.PhysicalLineCounter;
+import com.example.locproject.utils.PhysicalLineCounterUtil;
 
-public class LOCAnalyzerUtil {
+public class LOCAnalyzerService {
 
   public JavaProgram analiyzeLOCJavaProgram(JavaProgram javaProgram) {
     JavaProgram project = javaProgram;
@@ -27,7 +27,7 @@ public class LOCAnalyzerUtil {
 
   private JavaClass countPhysicalLOC(JavaClass javaClass) {
     JavaClass classToBeAnalyzed = javaClass;
-    Counter physicalLineCounter = new PhysicalLineCounter();
+    Counter physicalLineCounter = new PhysicalLineCounterUtil();
 
     try (Scanner scanner = new Scanner(classToBeAnalyzed.getJavaFile())) {
       while (scanner.hasNext()) {
@@ -38,7 +38,7 @@ public class LOCAnalyzerUtil {
 
       classToBeAnalyzed.setPhysicalLOC(physicalLineCounter.getCount());
     } catch (FileNotFoundException e) {
-      Logger.getLogger(LOCAnalyzerUtil.class.getName()).log(Level.SEVERE, null, e);
+      Logger.getLogger(LOCAnalyzerService.class.getName()).log(Level.SEVERE, null, e);
     }
 
     return classToBeAnalyzed;

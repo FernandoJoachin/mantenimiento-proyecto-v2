@@ -1,9 +1,9 @@
 package com.example;
 
 import com.example.locproject.models.JavaProgram;
+import com.example.locproject.service.LOCAnalyzerService;
 import com.example.locproject.service.ProjectScannerService;
-import com.example.locproject.service.ResultPrinterService;
-import com.example.locproject.utils.LOCAnalyzerUtil;
+import com.example.locproject.utils.ResultPrinterUtil;
 
 import java.io.File;
 import java.util.Scanner;
@@ -28,11 +28,11 @@ public class Main {
 
     JavaProgram javaProgram = projectScanner.getJavaProgram();
 
-    LOCAnalyzerUtil locAnalyzerUtil = new LOCAnalyzerUtil();
+    LOCAnalyzerService locAnalyzerUtil = new LOCAnalyzerService();
 
     javaProgram = locAnalyzerUtil.analiyzeLOCJavaProgram(javaProgram);
 
-    ResultPrinterService.saveResults(javaProgram);
+    ResultPrinterUtil.saveResults(javaProgram);
     
   }
 }
