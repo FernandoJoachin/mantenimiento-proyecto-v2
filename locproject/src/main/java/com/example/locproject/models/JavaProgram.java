@@ -20,6 +20,10 @@ public class JavaProgram {
         this.classes = classes;
     }
 
+    public void addClasses(JavaClass classes){
+        this.classes.add(classes);
+    }
+
     public int getTotalPhysicalLOC() {
         return totalPhysicalLOC;
     }

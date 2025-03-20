@@ -15,4 +15,8 @@ public abstract class Counter {
     public int getCount() {
         return this.counter;
     }
+
+    public void resetCount(){
+        this.counter = 0;
+    }
 }

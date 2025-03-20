@@ -9,35 +9,31 @@ import com.example.locproject.utils.GoogleJavaFormatUtil;
 
 public class ProjectScannerService {
 
-  private ArrayList<JavaClass> javaClasses;
-  private File directory;
+  private GoogleJavaFormatUtil formatter;
+  private JavaProgram javaProgram;
 
-  public ProjectScannerService(File directory) {
-    this.javaClasses = new ArrayList<>();
-    this.directory = directory;
+  public ProjectScannerService(String namePrograme, GoogleJavaFormatUtil formatter) {
+    this.javaProgram = new JavaProgram(new ArrayList<JavaClass>(), namePrograme);
+    this.formatter = formatter;
   }
 
-  public JavaProgram getJavaProgram() {
-    scanDirectory(this.directory);
-    return new JavaProgram(this.javaClasses, this.directory.getName());
-  }
-
-  private void scanDirectory(File directory) {
-
-    GoogleJavaFormatUtil formatter = new GoogleJavaFormatUtil();
-
-    if (directory.isDirectory()) {
-      File[] files = directory.listFiles();
+  public void scanDirectory(File path) {
+    if (path.isDirectory()) {
+      File[] files = path.listFiles();
       if (files != null) {
         for (File file : files) {
           scanDirectory(file);
         }
       }
     } else {
-      if (directory.getName().endsWith(".java") && formatter.isFormatValid(directory)) {
-        JavaClass javaClass = new JavaClass(directory);
-        this.javaClasses.add(javaClass);
+      if (path.getName().endsWith(".java") && formatter.isFormatValid(path)) {
+        JavaClass javaClass = new JavaClass(path);
+        this.javaProgram.addClasses(javaClass);
       }
     }
+  }
+
+  public JavaProgram getJavaProgram() {
+    return this.javaProgram;    
   }
 }

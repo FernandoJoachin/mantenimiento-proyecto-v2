@@ -4,32 +4,40 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import com.example.locproject.interfaces.Counter;
 import com.example.locproject.models.JavaClass;
 import com.example.locproject.models.JavaProgram;
 import com.example.locproject.utils.PhysicalLineCounterUtil;
 
 public class LOCAnalyzerService {
+  
+  private PhysicalLineCounterUtil physicalLineCounter;
+
+  public LOCAnalyzerService(
+    PhysicalLineCounterUtil physicalLineCounter
+  ) {
+    this.physicalLineCounter = physicalLineCounter;
+  }
 
   public JavaProgram analiyzeLOCJavaProgram(JavaProgram javaProgram) {
-    for (JavaClass javaClass : javaProgram.getClasses()) {
+    JavaProgram programToBeAnalyzed = javaProgram;
+
+    for (JavaClass javaClass : programToBeAnalyzed.getClasses()) {
       this.calculateMetricsJavaClass(javaClass);
     }
 
-    int totalLOCProgram = countSLOCProgram(javaProgram);
-    javaProgram.setTotalPhysicalLOC(totalLOCProgram);
+    int totalLOCProgram = countSLOCProgram(programToBeAnalyzed);
+    programToBeAnalyzed.setTotalPhysicalLOC(totalLOCProgram);
 
-    return javaProgram;
+    return programToBeAnalyzed;
   }
 
   private JavaClass calculateMetricsJavaClass(JavaClass javaClass) {
     JavaClass classToBeAnalyzed = javaClass;
-    Counter physicalLineCounter = new PhysicalLineCounterUtil();
 
     try (Scanner scanner = new Scanner(classToBeAnalyzed.getJavaFile())) {
       while (scanner.hasNext()) {
         String currentLine = scanner.nextLine().trim();
-        physicalLineCounter.count(currentLine);
+        this.physicalLineCounter.count(currentLine);
       }
       scanner.close();
 
@@ -37,6 +45,8 @@ public class LOCAnalyzerService {
     } catch (FileNotFoundException e) {
       Logger.getLogger(LOCAnalyzerService.class.getName()).log(Level.SEVERE, null, e);
     }
+    
+    this.physicalLineCounter.resetCount();
 
     return classToBeAnalyzed;
   }
