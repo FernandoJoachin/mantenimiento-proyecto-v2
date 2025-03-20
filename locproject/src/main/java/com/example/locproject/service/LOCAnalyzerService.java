@@ -12,20 +12,17 @@ import com.example.locproject.utils.PhysicalLineCounterUtil;
 public class LOCAnalyzerService {
 
   public JavaProgram analiyzeLOCJavaProgram(JavaProgram javaProgram) {
-    JavaProgram project = javaProgram;
-    
-    for (JavaClass javaClass : project.getClasses()) {
-      this.countPhysicalLOC(javaClass);
+    for (JavaClass javaClass : javaProgram.getClasses()) {
+      this.calculateMetricsJavaClass(javaClass);
     }
 
-    int totalLOCProgram = countPhysicalLOCProgram(project);
+    int totalLOCProgram = countSLOCProgram(javaProgram);
+    javaProgram.setTotalPhysicalLOC(totalLOCProgram);
 
-    project.setTotalPhysicalLOC(totalLOCProgram);
-
-    return project;
+    return javaProgram;
   }
 
-  private JavaClass countPhysicalLOC(JavaClass javaClass) {
+  private JavaClass calculateMetricsJavaClass(JavaClass javaClass) {
     JavaClass classToBeAnalyzed = javaClass;
     Counter physicalLineCounter = new PhysicalLineCounterUtil();
 
@@ -44,7 +41,7 @@ public class LOCAnalyzerService {
     return classToBeAnalyzed;
   }
 
-  private int countPhysicalLOCProgram(JavaProgram javaProgram) {
+  private int countSLOCProgram(JavaProgram javaProgram) {
     JavaProgram project = javaProgram;
     int totalLOCProgram = 0;
 
@@ -54,5 +51,4 @@ public class LOCAnalyzerService {
 
     return totalLOCProgram;
   }
-
 }
