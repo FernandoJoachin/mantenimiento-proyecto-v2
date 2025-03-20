@@ -1,6 +1,6 @@
 package com.example.locproject.utils;
 
-import com.example.locproject.interfaces.Counter;
+import com.example.locproject.abstracts.Counter;
 
 public class PhysicalLineCounterUtil extends Counter {
     @Override

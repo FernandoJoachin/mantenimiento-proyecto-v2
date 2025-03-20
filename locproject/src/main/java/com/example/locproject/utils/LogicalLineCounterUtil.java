@@ -4,7 +4,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import com.example.locproject.constants.JavaRegexConstants;
-import com.example.locproject.interfaces.Counter;
+import com.example.locproject.abstracts.Counter;
 
 /**
  * The {@code LogicalLineCounter} class implements the {@code LineCounter} interface

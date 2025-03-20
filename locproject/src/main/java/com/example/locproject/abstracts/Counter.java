@@ -1,4 +1,4 @@
-package com.example.locproject.interfaces;
+package com.example.locproject.abstracts;
 
 import com.example.locproject.validators.CommentValidator;
 
