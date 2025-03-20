@@ -1,11 +1,14 @@
+Programa: files
+Total de LOC fisicas del programa: 32
 
-Program: Example.java
-Logical Lines = 4 | Physical Lines = 14 | Total Lines = 24
-----------------------------------------------------------
-Program: Example2.java
-Logical Lines = 3 | Physical Lines = 12 | Total Lines = 15
-----------------------------------------------------------
-Program: Example3.java
-Logical Lines = 2 | Physical Lines = 6 | Total Lines = 11
-----------------------------------------------------------
-Total LOC in project= 50
+Clase: Example2.java
+Total de metodos: 0
+LOC fisicas: 12
+
+Clase: Example3.java
+Total de metodos: 0
+LOC fisicas: 6
+
+Clase: Example.java
+Total de metodos: 0
+LOC fisicas: 14

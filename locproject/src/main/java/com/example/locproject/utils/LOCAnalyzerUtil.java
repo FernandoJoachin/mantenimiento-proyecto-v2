@@ -1,72 +1,58 @@
 package com.example.locproject.utils;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import com.example.locproject.interfaces.Counter;
-import com.example.locproject.models.LogicalLineCounter;
+import com.example.locproject.models.JavaClass;
+import com.example.locproject.models.JavaProgram;
 import com.example.locproject.models.PhysicalLineCounter;
 
 public class LOCAnalyzerUtil {
 
-  private static int totalLinesProject = 0;
-  private static String result = "";
+  public JavaProgram analiyzeLOCJavaProgram(JavaProgram javaProgram) {
+    JavaProgram project = javaProgram;
+    
+    for (JavaClass javaClass : project.getClasses()) {
+      this.countPhysicalLOC(javaClass);
+    }
 
-  public void countLinesOfCode(File file) {
-    try {
-      int totalLines = 0;
-      Scanner scanner = new Scanner(file);
-      Counter logicalLineCounter = new LogicalLineCounter();
-      Counter physicalLineCounter = new PhysicalLineCounter();
+    int totalLOCProgram = countPhysicalLOCProgram(project);
 
+    project.setTotalPhysicalLOC(totalLOCProgram);
+
+    return project;
+  }
+
+  private JavaClass countPhysicalLOC(JavaClass javaClass) {
+    JavaClass classToBeAnalyzed = javaClass;
+    Counter physicalLineCounter = new PhysicalLineCounter();
+
+    try (Scanner scanner = new Scanner(classToBeAnalyzed.getJavaFile())) {
       while (scanner.hasNext()) {
-        totalLines++;
         String currentLine = scanner.nextLine().trim();
-        logicalLineCounter.count(currentLine);
         physicalLineCounter.count(currentLine);
       }
       scanner.close();
 
-      totalLinesProject += totalLines;
-      int logicalLine = logicalLineCounter.getCount();
-      int physicalLine = physicalLineCounter.getCount();
-      result +=
-          "\nProgram: "
-              + file.getName()
-              + "\nLogical Lines = "
-              + logicalLine
-              + " | Physical Lines = "
-              + physicalLine
-              + " | Total Lines = "
-              + totalLines
-              + "\n----------------------------------------------------------";
-
-    } catch (IOException ex) {
-      Logger.getLogger(LOCAnalyzerUtil.class.getName()).log(Level.SEVERE, null, ex);
+      classToBeAnalyzed.setPhysicalLOC(physicalLineCounter.getCount());
+    } catch (FileNotFoundException e) {
+      Logger.getLogger(LOCAnalyzerUtil.class.getName()).log(Level.SEVERE, null, e);
     }
+
+    return classToBeAnalyzed;
   }
 
-  public void saveResults() {
-    File output = new File("output.txt");
-    try {
-      output.createNewFile();
-      FileWriter filewriter = new FileWriter(output);
-      filewriter.write(result + "\nTotal LOC in project= " + totalLinesProject);
-      filewriter.close();
-    } catch (IOException exception) {
-      Logger.getLogger(LOCAnalyzerUtil.class.getName()).log(Level.SEVERE, null, exception);
+  private int countPhysicalLOCProgram(JavaProgram javaProgram) {
+    JavaProgram project = javaProgram;
+    int totalLOCProgram = 0;
+
+    for (JavaClass javaClass : project.getClasses()) {
+      totalLOCProgram += javaClass.getPhysicalLOC();
     }
+
+    return totalLOCProgram;
   }
 
-  public String getResult() {
-    return result;
-  }
-
-  public void reset() {
-    totalLinesProject = 0;
-    result = "";
-  }
 }

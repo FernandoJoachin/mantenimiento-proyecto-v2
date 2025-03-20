@@ -1,13 +1,15 @@
 package com.example;
 
+import com.example.locproject.models.JavaProgram;
 import com.example.locproject.service.ProjectScannerService;
+import com.example.locproject.service.ResultPrinterService;
+import com.example.locproject.utils.LOCAnalyzerUtil;
 
 import java.io.File;
 import java.util.Scanner;
 
 public class Main {
   public static void main(String[] args) {
-    ProjectScannerService projectScanner = new ProjectScannerService();
 
     Scanner scanner = new Scanner(System.in);
     System.out.print("Ingrese la ruta del directorio: ");
@@ -22,6 +24,15 @@ public class Main {
       return;
     }
 
-    projectScanner.scanDirectory(root);
+    ProjectScannerService projectScanner = new ProjectScannerService(root);
+
+    JavaProgram javaProgram = projectScanner.getJavaProgram();
+
+    LOCAnalyzerUtil locAnalyzerUtil = new LOCAnalyzerUtil();
+
+    javaProgram = locAnalyzerUtil.analiyzeLOCJavaProgram(javaProgram);
+
+    ResultPrinterService.saveResults(javaProgram);
+    
   }
 }
