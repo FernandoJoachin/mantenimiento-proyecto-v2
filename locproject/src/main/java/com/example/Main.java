@@ -35,7 +35,7 @@ public class Main {
     LOCAnalyzerService locAnalyzerUtil = new LOCAnalyzerService(physicalLineCounter);
     javaProgram = locAnalyzerUtil.analiyzeLOCJavaProgram(javaProgram);
 
-    ResultPrinterUtil.saveResults(javaProgram);
+    ResultPrinterUtil.printResults("output", javaProgram);
     
   }
 }

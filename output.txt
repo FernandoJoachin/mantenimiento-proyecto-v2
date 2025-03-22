@@ -1,14 +1,11 @@
-Programa: files
-Total de LOC fisicas del programa: 32
-
-Clase: Example2.java
-Total de metodos: 0
-LOC fisicas: 12
-
-Clase: Example3.java
-Total de metodos: 0
-LOC fisicas: 6
-
-Clase: Example.java
-Total de metodos: 0
-LOC fisicas: 14
++----------+---------------+---------+-------------+-------------------+
+| Programa | Clase         | Métodos | LOC Físicas | Total LOC físicas |
++----------+---------------+---------+-------------+-------------------+
+| files    | Example2.java | 0       | 12          |                   |
++----------+---------------+---------+-------------+-------------------+
+|          | Example3.java | 0       | 6           |                   |
++----------+---------------+---------+-------------+-------------------+
+|          | Example.java  | 0       | 14          |                   |
++----------+---------------+---------+-------------+-------------------+
+|          |               |         |             | 32                |
++----------+---------------+---------+-------------+-------------------+

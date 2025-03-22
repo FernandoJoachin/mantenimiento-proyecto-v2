@@ -12,9 +12,7 @@ public class LOCAnalyzerService {
   
   private PhysicalLineCounterUtil physicalLineCounter;
 
-  public LOCAnalyzerService(
-    PhysicalLineCounterUtil physicalLineCounter
-  ) {
+  public LOCAnalyzerService(PhysicalLineCounterUtil physicalLineCounter) {
     this.physicalLineCounter = physicalLineCounter;
   }
 
