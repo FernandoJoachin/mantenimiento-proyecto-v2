@@ -30,4 +30,9 @@ public class SymbolsConstants {
      * Represents a minus sign: "-".
      */
     public static final String MINUS_SIGN = "-";
+
+    /**  
+     * Single space character for formatting checks.  
+     */
+    public static final String SPACE = " ";
 }
