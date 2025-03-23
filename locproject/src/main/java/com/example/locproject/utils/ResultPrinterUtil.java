@@ -29,7 +29,7 @@ public class ResultPrinterUtil {
         File output = new File(nameFile + ".txt");
         try {
             output.createNewFile();
-            FileWriter filewriter = new FileWriter(output);
+            FileWriter filewriter = new FileWriter(output, true);
             filewriter.write(data);
             filewriter.close();
         } catch (IOException exception) {
