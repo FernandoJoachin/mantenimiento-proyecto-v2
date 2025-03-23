@@ -6,14 +6,20 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import com.example.locproject.models.JavaClass;
 import com.example.locproject.models.JavaProgram;
+import com.example.locproject.utils.MethodCounterUtil;
 import com.example.locproject.utils.PhysicalLineCounterUtil;
 
 public class LOCAnalyzerService {
   
   private PhysicalLineCounterUtil physicalLineCounter;
+  private MethodCounterUtil methodCounter;
 
-  public LOCAnalyzerService(PhysicalLineCounterUtil physicalLineCounter) {
+  public LOCAnalyzerService(
+    PhysicalLineCounterUtil physicalLineCounter,
+    MethodCounterUtil methodCounter
+  ) {
     this.physicalLineCounter = physicalLineCounter;
+    this.methodCounter = methodCounter;
   }
 
   public JavaProgram analiyzeLOCJavaProgram(JavaProgram javaProgram) {
@@ -36,15 +42,18 @@ public class LOCAnalyzerService {
       while (scanner.hasNext()) {
         String currentLine = scanner.nextLine().trim();
         this.physicalLineCounter.count(currentLine);
+        this.methodCounter.count(currentLine);
       }
       scanner.close();
 
       classToBeAnalyzed.setPhysicalLOC(physicalLineCounter.getCount());
+      classToBeAnalyzed.setTotalNumberOfMethods(methodCounter.getCount());
     } catch (FileNotFoundException e) {
       Logger.getLogger(LOCAnalyzerService.class.getName()).log(Level.SEVERE, null, e);
     }
     
     this.physicalLineCounter.resetCount();
+    this.methodCounter.resetCount();
 
     return classToBeAnalyzed;
   }

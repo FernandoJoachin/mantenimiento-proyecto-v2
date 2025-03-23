@@ -1,11 +1,11 @@
-package com.example.locproject.models;
+package com.example.locproject.utils;
 
 import java.util.regex.Pattern;
 
 import com.example.locproject.constants.JavaRegexConstants;
-import com.example.locproject.interfaces.Counter;
+import com.example.locproject.abstracts.Counter;
 
-public class MethodCounter extends Counter {
+public class MethodCounterUtil extends Counter {
 
     @Override
     public void count(String line) {

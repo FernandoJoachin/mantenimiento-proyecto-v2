@@ -4,6 +4,7 @@ import com.example.locproject.models.JavaProgram;
 import com.example.locproject.service.LOCAnalyzerService;
 import com.example.locproject.service.ProjectScannerService;
 import com.example.locproject.utils.GoogleJavaFormatUtil;
+import com.example.locproject.utils.MethodCounterUtil;
 import com.example.locproject.utils.PhysicalLineCounterUtil;
 import com.example.locproject.utils.ResultPrinterUtil;
 
@@ -32,7 +33,8 @@ public class Main {
     JavaProgram javaProgram = projectScanner.getJavaProgram();
 
     PhysicalLineCounterUtil physicalLineCounter = new PhysicalLineCounterUtil();
-    LOCAnalyzerService locAnalyzerUtil = new LOCAnalyzerService(physicalLineCounter);
+    MethodCounterUtil methodCounterUtil = new MethodCounterUtil();
+    LOCAnalyzerService locAnalyzerUtil = new LOCAnalyzerService(physicalLineCounter, methodCounterUtil);
     javaProgram = locAnalyzerUtil.analiyzeLOCJavaProgram(javaProgram);
 
     ResultPrinterUtil.printResults("output", javaProgram);
