@@ -1,10 +1,10 @@
-package com.example.locproject.models;
+package com.example.locproject.utils;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import com.example.locproject.constants.JavaRegexConstants;
-import com.example.locproject.interfaces.Counter;
+import com.example.locproject.abstracts.Counter;
 
 /**
  * The {@code LogicalLineCounter} class implements the {@code LineCounter} interface
@@ -12,7 +12,7 @@ import com.example.locproject.interfaces.Counter;
  * A logical line is determined based on specific Java constructs such as class declarations,
  * method declarations, flow control structures, and try blocks.
  */
-public class LogicalLineCounter extends Counter {
+public class LogicalLineCounterUtil extends Counter {
     /**
      * Regular expression pattern used to match logical line constructs.
      */

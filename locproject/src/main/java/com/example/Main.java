@@ -1,13 +1,17 @@
 package com.example;
 
+import com.example.locproject.models.JavaProgram;
+import com.example.locproject.service.LOCAnalyzerService;
 import com.example.locproject.service.ProjectScannerService;
+import com.example.locproject.utils.GoogleJavaFormatUtil;
+import com.example.locproject.utils.PhysicalLineCounterUtil;
+import com.example.locproject.utils.ResultPrinterUtil;
 
 import java.io.File;
 import java.util.Scanner;
 
 public class Main {
   public static void main(String[] args) {
-    ProjectScannerService projectScanner = new ProjectScannerService();
 
     Scanner scanner = new Scanner(System.in);
     System.out.print("Ingrese la ruta del directorio: ");
@@ -22,6 +26,16 @@ public class Main {
       return;
     }
 
+    GoogleJavaFormatUtil formatter = new GoogleJavaFormatUtil();
+    ProjectScannerService projectScanner = new ProjectScannerService(root.getName(), formatter);
     projectScanner.scanDirectory(root);
+    JavaProgram javaProgram = projectScanner.getJavaProgram();
+
+    PhysicalLineCounterUtil physicalLineCounter = new PhysicalLineCounterUtil();
+    LOCAnalyzerService locAnalyzerUtil = new LOCAnalyzerService(physicalLineCounter);
+    javaProgram = locAnalyzerUtil.analiyzeLOCJavaProgram(javaProgram);
+
+    ResultPrinterUtil.printResults("output", javaProgram);
+    
   }
 }

@@ -1,4 +1,4 @@
-package com.example.locproject.interfaces;
+package com.example.locproject.abstracts;
 
 import com.example.locproject.validators.CommentValidator;
 
@@ -14,5 +14,9 @@ public abstract class Counter {
 
     public int getCount() {
         return this.counter;
+    }
+
+    public void resetCount(){
+        this.counter = 0;
     }
 }
