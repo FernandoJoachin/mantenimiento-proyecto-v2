@@ -5,17 +5,19 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import com.example.locproject.service.LOCAnalyzerService;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
 
 class LOCAnalyzerUtilTest {
 
-  private LOCAnalyzerUtil locAnalyzerUtil;
+  private LOCAnalyzerService locAnalyzerUtil;
 
   @BeforeEach
   void setUp() {
-    locAnalyzerUtil = new LOCAnalyzerUtil();
+    locAnalyzerUtil = new LOCAnalyzerService();
     locAnalyzerUtil.reset();
   }
 
