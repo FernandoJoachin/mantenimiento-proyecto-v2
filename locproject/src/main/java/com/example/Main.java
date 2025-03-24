@@ -28,8 +28,7 @@ public class Main {
     }
 
     GoogleJavaFormatUtil formatter = new GoogleJavaFormatUtil();
-    ProjectScannerService projectScanner = new ProjectScannerService(root.getName(), formatter);
-    projectScanner.scanDirectory(root);
+    ProjectScannerService projectScanner = new ProjectScannerService(root, formatter);
     JavaProgram javaProgram = projectScanner.getJavaProgram();
 
     PhysicalLineCounterUtil physicalLineCounter = new PhysicalLineCounterUtil();
@@ -38,6 +37,5 @@ public class Main {
     javaProgram = locAnalyzerUtil.analiyzeLOCJavaProgram(javaProgram);
 
     ResultPrinterUtil.printResults("output", javaProgram);
-    
   }
 }

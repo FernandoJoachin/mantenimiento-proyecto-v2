@@ -1,15 +1,16 @@
 package com.example.locproject.models;
 
+import java.io.File;
 import java.util.ArrayList;
 
 public class JavaProgram {
     private ArrayList<JavaClass> classes;
     private int totalPhysicalLOC;
-    private String nameProgram;
+    private File directory;
 
-    public JavaProgram(ArrayList<JavaClass> classes, String nameProgram) {
+    public JavaProgram(ArrayList<JavaClass> classes, File directory) {
         this.classes = classes;
-        this.nameProgram = nameProgram;
+        this.directory = directory;
     }
 
     public ArrayList<JavaClass> getClasses() {
@@ -32,12 +33,15 @@ public class JavaProgram {
         this.totalPhysicalLOC = totalPhysicalLOC;
     }
 
-    public String getNameProgram() {
-        return nameProgram;
+    public File getDirectory() {
+        return this.directory;
     }
 
-    public void setNameProgram(String nameProgram) {
-        this.nameProgram = nameProgram;
+    public void setDirectroy(File directory) {
+        this.directory = directory;
     }
-    
+
+    public String getNameProgram() {
+        return directory.getName();
+    }    
 }

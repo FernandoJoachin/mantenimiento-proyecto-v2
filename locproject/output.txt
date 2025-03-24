@@ -1,8 +1,0 @@
-
-Program: JavaTestFile.java
-Logical Lines = 24 | Physical Lines = 83 | Total Lines = 93
-----------------------------------------------------------
-Program: FileReaderExample.java
-Logical Lines = 11 | Physical Lines = 29 | Total Lines = 36
-----------------------------------------------------------
-Total LOC in project= 129

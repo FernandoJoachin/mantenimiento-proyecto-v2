@@ -12,12 +12,12 @@ public class ProjectScannerService {
   private GoogleJavaFormatUtil formatter;
   private JavaProgram javaProgram;
 
-  public ProjectScannerService(String namePrograme, GoogleJavaFormatUtil formatter) {
-    this.javaProgram = new JavaProgram(new ArrayList<JavaClass>(), namePrograme);
+  public ProjectScannerService(File directory, GoogleJavaFormatUtil formatter) {
+    this.javaProgram = new JavaProgram(new ArrayList<JavaClass>(), directory);
     this.formatter = formatter;
   }
 
-  public void scanDirectory(File path) {
+  private void scanDirectory(File path) {
     if (path.isDirectory()) {
       File[] files = path.listFiles();
       if (files != null) {
@@ -34,6 +34,7 @@ public class ProjectScannerService {
   }
 
   public JavaProgram getJavaProgram() {
+    scanDirectory(this.javaProgram.getDirectory());
     return this.javaProgram;    
   }
 }
