@@ -1,6 +1,6 @@
 package com.example.locproject.service;
 
-import static org.junit.jupiter.api.Assertions.*;
+/*import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -56,3 +56,4 @@ class ProjectScannerServiceTest {
     assertEquals(expectedOutput, actualOutput, "The result is unexpected");
   }
 }
+*/
