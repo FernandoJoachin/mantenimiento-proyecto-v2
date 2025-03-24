@@ -2,57 +2,58 @@ package com.example.locproject.service;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.List;
+import java.nio.file.Path;
 
-class ProjectScannerServiceTest {
+import com.example.locproject.models.JavaProgram;
+import com.example.locproject.utils.GoogleJavaFormatUtil;
 
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.io.TempDir;
+
+public class ProjectScannerServiceTest {
+  @TempDir
+  Path tempDir;
+
+  private GoogleJavaFormatUtil formatter;
   private ProjectScannerService projectScannerService;
 
   @BeforeEach
-  void setUp() {
-    projectScannerService = new ProjectScannerService();
+  public void setUp() {
+    formatter = new GoogleJavaFormatUtil();
+    projectScannerService = new ProjectScannerService(tempDir.toFile(), formatter);
   }
 
   @Test
-  void testScanDirectory() throws IOException {
-    File testDirectory = Paths.get("spring-boot-posts-service/src/main/java/com/example").toFile();
+  public void testGetJavaProgramWithValidJavaFiles() throws IOException {
+    Files.createFile(tempDir.resolve("Test1.java")).toFile();
+    Files.createFile(tempDir.resolve("Test2.java")).toFile();
 
-    projectScannerService.scanDirectory(testDirectory);
+    Files.createFile(tempDir.resolve("Test.txt"));
 
-    File outputFile = new File("output.txt");
-    assertTrue(outputFile.exists(), "El archivo output.txt no fue generado.");
+    JavaProgram result = projectScannerService.getJavaProgram();
 
-    List<String> lines = Files.readAllLines(outputFile.toPath());
-    String actualOutput = String.join("\n", lines).trim();
-
-    String expectedOutput =
-        """
-        Program: BlacklistedTokenRepository.java
-        Logical Lines = 1 | Physical Lines = 9 | Total Lines = 15
-        ----------------------------------------------------------
-        Program: PostRepository.java
-        Logical Lines = 2 | Physical Lines = 11 | Total Lines = 15
-        ----------------------------------------------------------
-        Program: Post.java
-        Logical Lines = 12 | Physical Lines = 32 | Total Lines = 41
-        ----------------------------------------------------------
-        Program: AddPostDTO.java
-        Logical Lines = 3 | Physical Lines = 14 | Total Lines = 20
-        ----------------------------------------------------------
-        Program: BlacklistedToken.java
-        Logical Lines = 2 | Physical Lines = 14 | Total Lines = 18
-        ----------------------------------------------------------
-        Total LOC in project= 109
-        """
-            .trim();
-
-    assertEquals(expectedOutput, actualOutput, "The result is unexpected");
+    assertEquals(
+      2, 
+      result.getClasses().size(), 
+      "The number of classes in JavaProgram should be 2"
+    );
+    assertEquals(
+      "Test1.java", 
+      result.getClasses().get(0).getNameClass(), 
+      "The name of the first class should be 'Test1.java'"
+    );
+    assertEquals(
+      "Test2.java", 
+      result.getClasses().get(1).getNameClass(), 
+      "The name of the second class should be 'Test2.java'"
+    );
+    assertEquals(
+      tempDir.toFile(), 
+      result.getDirectory(), 
+      "The directory of JavaProgram should match the created temporary directory"
+    );
   }
 }
