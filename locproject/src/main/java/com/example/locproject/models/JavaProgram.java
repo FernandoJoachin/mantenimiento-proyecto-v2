@@ -7,9 +7,9 @@ public class JavaProgram {
     private int totalPhysicalLOC;
     private String nameProgram;
 
-    public JavaProgram(ArrayList<JavaClass> classes, String namePrograme) {
+    public JavaProgram(ArrayList<JavaClass> classes, String nameProgram) {
         this.classes = classes;
-        this.nameProgram = namePrograme;
+        this.nameProgram = nameProgram;
     }
 
     public ArrayList<JavaClass> getClasses() {
