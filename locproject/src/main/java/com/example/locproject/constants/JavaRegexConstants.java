@@ -45,52 +45,10 @@ public class JavaRegexConstants {
     public final static String STRUCT_DECLARATION_REGEX = "((class|enum|interface)\\s+)";
 
     /**
-     * Regular expression to match generic parameters.
-     * Example: "<T>", "<String, Integer>".
-     */
-    public final static String GENERIC_PARAMETERS_REGEX = "(<[^>]+>)?";
-
-    /**
-     * Regular expression to match "else if" statements.
-     * Example: "else if (condition)".
-     */
-    public static final String ELSE_IF_REGEX = "\\belse\\s+if\\b";
-
-    /**
-     * Regular expression to match flow control statements (if, for, while, switch).
-     * Example: "if (condition)", "for (int i = 0; i < 10; i++)".
-     */
-    public final static String FLOW_CONTROL_REGEX = "((if|for|while|switch)\\s*\\([^)]*\\))\\s*";
-
-    /**
-     * Regular expression to match wildcard import statements.
-     * Example: "import java.util.*;".
-     */
-    public final static String WILDCARD_IMPORT_REGEX = "^\\s*import\\s+[a-zA-Z0-9_.]+\\.\\*\\s*;$";
-
-    /**
      * Regular expression to match "final" and/or "static" keywords in any order.
      * Example: "static final", "final static", "static", "final".
      */
     public final static String FINAL_OR_STATIC_REGEX = "(?:(?:static\\s+)?(?:final\\s+)?|(?:final\\s+)?(?:static\\s+)?)?";
-
-    /**
-     * Regular expression to match "try" blocks, including optional parameters.
-     * Example: "try { ... }", "try (resource) { ... }".
-     */
-    public final static String TRY_DECLARATION_REGEX = "(try\\s+" + PARAMETERS_DECLARATION_REGEX + "?.*)";
-
-    /**
-     * Regular expression to match quoted strings (single or double quotes).
-     * Example: "\"Hello, World!\"", "'Hello'".
-     */
-    public static final String QUOTED_STRING_REGEX = "\"[^\"]*\"|'[^']*'";
-
-    /**
-     * Regular expression to match annotations.
-     * Example: "@Override", "@SuppressWarnings(\"unchecked\")".
-     */
-    public static final String ANNOTATION_REGEX = "^\\s*@\\w+(\\(.*\\))?\\s*$";
 
     /**
      * Regular expression to match method declarations, including access modifiers,
@@ -103,23 +61,7 @@ public class JavaRegexConstants {
         DATATYPE_DECLARATION_REGEX +       
         IDENTIFIER_DECLARATION_REGEX +     
         PARAMETERS_DECLARATION_REGEX +     
-        THROWS_DECLARATION_REGEX; 
-
-    /**
-     * Regular expression to match valid Java declarations, including classes,
-     * methods, control flow statements, and more.
-     * Example: "public class MyClass { ... }", "if (condition) { ... }".
-     */
-    public static final String VALID_DECLARATION = ".*\\s*" +
-        "(public|private|protected|class|interface|enum|if|else|for|while|switch|do|try)" +
-        "\\s+.*\\{.*|.*\\)\\s*\\{.*";
-
-    /**
-     * Regular expression to match class instantiation with the "new" keyword.
-     * Example: "new MyClass()", "new ArrayList<String>()".
-     */
-    public static final String CLASS_INSTANTIATION_REGEX = ".*\\bnew\\s+(([a-zA-Z0-9_]+\\.)" +
-        "*[a-zA-Z0-9_]+(<[^>]+>)?\\s*\\([^)]*\\)).*";
+        THROWS_DECLARATION_REGEX;
 
     /**
      * Regular expression to match class names according to naming conventions.
