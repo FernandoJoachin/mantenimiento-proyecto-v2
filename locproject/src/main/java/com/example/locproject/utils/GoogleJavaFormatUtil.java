@@ -115,8 +115,7 @@ public class GoogleJavaFormatUtil {
    */
   private boolean validateMethodBraceStyle(String line, int lineNumber, String fileName) throws FileFormatException {
       Pattern methodPattern = Pattern.compile(
-          JavaRegexConstants.METHOD_DECLARATION_REGEX + 
-          JavaRegexConstants.ANY_CHARACTERS
+          JavaRegexConstants.METHOD_DECLARATION_REGEX
       );
       if (methodPattern.matcher(line).find() && !line.trim().endsWith(SymbolsConstants.OPENING_BRACE)) {
           throw new FileFormatException(fileName, lineNumber, 

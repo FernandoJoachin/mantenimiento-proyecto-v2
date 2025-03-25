@@ -1,51 +1,173 @@
 package com.example.locproject.utils;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-
 import static org.junit.jupiter.api.Assertions.*;
 
-class GoogleJavaFormatUtilTest {
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-  private GoogleJavaFormatUtil googleJavaFormatUtil;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.nio.file.Files;
+import java.util.ArrayList;
+import java.util.List;
 
-  @BeforeEach
-  void setUp() {
-    googleJavaFormatUtil = new GoogleJavaFormatUtil();
-  }
+public class GoogleJavaFormatUtilTest {
 
-  @Test
-  void testIsFormatValid_ValidFile() throws IOException {
-    File validFile = File.createTempFile("validTestFile", ".java");
-    validFile.deleteOnExit();
+    private GoogleJavaFormatUtil util;
+    private File tempFile;
 
-    String validContent =
-        "public class ValidClass {\n"
-            + "   public void validMethod() {\n"
-            + "       // Valid code\n"
-            + "   }\n"
-            + "}\n";
-    Files.write(validFile.toPath(), validContent.getBytes());
+    @BeforeEach
+    public void setUp() {
+        util = new GoogleJavaFormatUtil();
+    }
 
-    assertTrue(googleJavaFormatUtil.isFormatValid(validFile), "File must be valid");
-  }
+    @AfterEach
+    public void tearDown() throws Exception {
+        if (tempFile != null && tempFile.exists()) {
+            Files.delete(tempFile.toPath());
+        }
+    }
 
-  @Test
-  void testIsFormatValid_InvalidFile() throws IOException {
-    File invalidFile = File.createTempFile("invalidTestFile", ".java");
-    invalidFile.deleteOnExit();
+    @Test
+    public void testValidFormat() throws Exception {
+        List<String> lines = new ArrayList<>();
+        lines.add("package com.example;");
+        lines.add("");
+        lines.add("public class TestClass {");
+        lines.add("  public void testMethod() {");
+        lines.add("    System.out.println(\"Hello World\");");
+        lines.add("  }");
+        lines.add("}");
+        tempFile = File.createTempFile("TestClassValid", ".java");
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile))) {
+            for (String line : lines) {
+                writer.write(line);
+                writer.newLine();
+            }
+        }
+        boolean isValid = util.isFormatValid(tempFile);
+        assertTrue(isValid, "A file with valid format should return true");
+    }
 
-    String invalidContent =
-        "public class InvalidClass {\n"
-            + "   public int invalidMethod(){ return 5+5 } \n"
-            + "       // Invalid code\n"
-            + "   \n"
-            + "}\n";
-    Files.write(invalidFile.toPath(), invalidContent.getBytes());
+    @Test
+    public void testBraceError() throws Exception {
+        List<String> lines = new ArrayList<>();
+        lines.add("package com.example;");
+        lines.add("");
+        lines.add("if (x > 0) { //"); // incorrect brace position
+        lines.add("public class TestClass {"); 
+        lines.add("  public void testMethod() {");
+        lines.add("    System.out.println(\"Hello World\");");
+        lines.add("  }");
+        lines.add("}");
 
-    assertFalse(googleJavaFormatUtil.isFormatValid(invalidFile), "File must be invalid");
-  }
+        tempFile = File.createTempFile("TestBraceError", ".java");
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile))) {
+            for (String line : lines) {
+                writer.write(line);
+                writer.newLine();
+            }
+        }
+        boolean isValid = util.isFormatValid(tempFile);
+        assertFalse(isValid, "A file with a brace style error should return false");
+    }
+
+    @Test
+    public void testClassBraceError() throws Exception {
+        List<String> lines = new ArrayList<>();
+        lines.add("package com.example;");
+        lines.add("");
+        lines.add("public class TestClass"); // Class declaration without opening brace
+        lines.add("{");
+        lines.add("  public void testMethod() {");
+        lines.add("    System.out.println(\"Hello World\");");
+        lines.add("  }");
+        lines.add("}");
+
+        tempFile = File.createTempFile("TestClassBraceError", ".java");
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile))) {
+            for (String line : lines) {
+                writer.write(line);
+                writer.newLine();
+            }
+        }
+        boolean isValid = util.isFormatValid(tempFile);
+        assertFalse(isValid, "A file with a class declaration missing an opening brace should return false");
+    }
+
+    @Test
+    public void testMethodBraceError() throws Exception {
+        List<String> lines = new ArrayList<>();
+        lines.add("package com.example;");
+        lines.add("");
+        lines.add("public class TestClass {");
+        lines.add("  public void testMethod() "); // Method declaration without opening brace
+        lines.add("  {");
+        lines.add("    System.out.println(\"Hello World\");");
+        lines.add("  }");
+        lines.add("}");
+
+        tempFile = File.createTempFile("TestMethodBraceError", ".java");
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile))) {
+            for (String line : lines) {
+                writer.write(line);
+                writer.newLine();
+            }
+        }
+        boolean isValid = util.isFormatValid(tempFile);
+        assertFalse(isValid, "A file with a method declaration missing an opening brace should return false");
+    }
+
+    @Test
+    public void testLineLengthError() throws Exception {
+        StringBuilder longLine = new StringBuilder();
+        for (int i = 0; i < 200; i++) {
+            longLine.append("a");
+        }
+
+        List<String> lines = new ArrayList<>();
+        lines.add("package com.example;");
+        lines.add("");
+        lines.add(longLine.toString()); // Use the long line in the file.
+        lines.add("public class TestClass {");
+        lines.add("  public void testMethod() {");
+        lines.add("    System.out.println(\"Hello World\");");
+        lines.add("  }");
+        lines.add("}");
+
+        tempFile = File.createTempFile("TestLineLengthError", ".java");
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile))) {
+            for (String line : lines) {
+                writer.write(line);
+                writer.newLine();
+            }
+        }
+        boolean isValid = util.isFormatValid(tempFile);
+        assertFalse(isValid, "A file with a line length error should return false");
+    }
+
+    @Test
+    public void testIndentationError() throws Exception {
+        List<String> lines = new ArrayList<>();
+        lines.add("package com.example;");
+        lines.add("");
+        lines.add("public class TestClass {");
+        lines.add("   System.out.println(\"Indentation error\");"); // Line with 3 leading spaces (invalid indentation, odd number)
+        lines.add("  public void testMethod() {");
+        lines.add("    System.out.println(\"Hello World\");");
+        lines.add("  }");
+        lines.add("}");
+
+        tempFile = File.createTempFile("TestIndentationError", ".java");
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile))) {
+            for (String line : lines) {
+                writer.write(line);
+                writer.newLine();
+            }
+        }
+        boolean isValid = util.isFormatValid(tempFile);
+        assertFalse(isValid, "A file with an indentation error should return false");
+    }
 }

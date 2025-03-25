@@ -67,11 +67,5 @@ public class JavaRegexConstants {
      * Regular expression to match class names according to naming conventions.
      * Example: "class MyClass {", "interface PaymentProcessor {".
      */
-    public static final String CLASS_NAME_REGEX = "\\s*[A-Z][a-zA-Z0-9]*\\s*\\{";
-
-    /**
-     * Regular expression to match lines ending with an opening brace.
-     * Example: "public void processRequest() {", "if (condition) {".
-     */
-    public static final String ANY_CHARACTERS = ".*\\{";
+    public static final String CLASS_NAME_REGEX = "[A-Z][a-zA-Z0-9]*\\s*";
 }
