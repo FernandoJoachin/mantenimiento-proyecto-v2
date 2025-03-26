@@ -79,19 +79,22 @@ public class ResultPrinterUtil {
      */
     private static String buildTable(JavaProgram javaProgram) {
         List<JavaClass> classes = javaProgram.getClasses();
-        List<String> headers = List.of(HEADER_PROGRAM, HEADER_CLASS, HEADER_METHODS, HEADER_PHYSICAL_LOC, HEADER_TOTAL_LOC);
+        List<String> headers = List.of(
+            HEADER_PROGRAM, HEADER_CLASS, 
+            HEADER_METHODS, HEADER_PHYSICAL_LOC, 
+            HEADER_TOTAL_LOC);
         List<List<String>> data = new ArrayList<>();
         boolean isFirstRow = true;
 
         for (JavaClass javaClass : classes) {
             data.add(List.of(isFirstRow ? javaProgram.getNameProgram() : "", 
-                             javaClass.getNameClass(), 
-                             String.valueOf(javaClass.getTotalNumberOfMethods()), 
-                             String.valueOf(javaClass.getPhysicalLOC()), 
-                             ""));
+                            javaClass.getNameClass(), 
+                            String.valueOf(javaClass.getTotalNumberOfMethods()), 
+                            String.valueOf(javaClass.getPhysicalLOC()), 
+                            ""));
             isFirstRow = false;
         }
         data.add(List.of("", "", "", "", String.valueOf(javaProgram.getTotalPhysicalLOC())));
-        return TableFormatter.formatTable(headers, data);
+        return TableFormatterUtil.formatTable(headers, data);
     }
 }

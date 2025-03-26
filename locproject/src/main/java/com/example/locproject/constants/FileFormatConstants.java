@@ -9,17 +9,20 @@ public class FileFormatConstants {
     /**
      * Error message indicating that the brace style used in the code is incorrect.
      */
-    public static final String INVALID_BRACE_STYLE_MESSAGE = "Incorrect brace style";
+    public static final String INVALID_BRACE_STYLE_MESSAGE = 
+    "Incorrect brace style";
 
     /**
      * Error message indicating that the brace style in a class declaration is incorrect.
      */
-    public static final String INVALID_CLASS_BRACE_STYLE_MESSAGE = "Incorrect brace style in class declaration";
+    public static final String INVALID_CLASS_BRACE_STYLE_MESSAGE = 
+    "Incorrect brace style in class declaration";
 
     /**
      * Error message indicating that the brace style in a method declaration is incorrect.
      */
-    public static final String INVALID_METHOD_BRACE_STYLE_MESSAGE = "Incorrect brace style in method declaration";
+    public static final String INVALID_METHOD_BRACE_STYLE_MESSAGE = 
+    "Incorrect brace style in method declaration";
 
     /**
      * Error message indicating that a line exceeds the maximum allowed length of 100 characters.

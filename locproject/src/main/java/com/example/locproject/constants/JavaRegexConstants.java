@@ -18,13 +18,15 @@ public class JavaRegexConstants {
      * Regular expression to match data type declarations, including generics.
      * Example: "String", "List<String>".
      */
-    public final static String DATATYPE_DECLARATION_REGEX = "(\\s*[a-zA-Z0-9]+(<[a-zA-Z0-9]+>)?\\s+)";
+    public final static String DATATYPE_DECLARATION_REGEX = 
+    "(\\s*[a-zA-Z0-9]+(<[a-zA-Z0-9]+>)?\\s+)";
 
     /**
      * Regular expression to match the "throws" clause in method declarations.
      * Example: "throws IOException, SQLException".
      */
-    public final static String THROWS_DECLARATION_REGEX = "(\\s+(throws\\s+(\\w+\\s*,\\s*)*\\w+)\\s*)?";
+    public final static String THROWS_DECLARATION_REGEX = 
+    "(\\s+(throws\\s+(\\w+\\s*,\\s*)*\\w+)\\s*)?";
 
     /**
      * Regular expression to match method or constructor parameters.
@@ -48,7 +50,8 @@ public class JavaRegexConstants {
      * Regular expression to match "final" and/or "static" keywords in any order.
      * Example: "static final", "final static", "static", "final".
      */
-    public final static String FINAL_OR_STATIC_REGEX = "(?:(?:static\\s+)?(?:final\\s+)?|(?:final\\s+)?(?:static\\s+)?)?";
+    public final static String FINAL_OR_STATIC_REGEX = 
+    "(?:(?:static\\s+)?(?:final\\s+)?|(?:final\\s+)?(?:static\\s+)?)?";
 
     /**
      * Regular expression to match method declarations, including access modifiers,
