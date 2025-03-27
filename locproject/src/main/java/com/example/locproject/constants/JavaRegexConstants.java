@@ -71,4 +71,10 @@ public class JavaRegexConstants {
      * Example: "class MyClass {", "interface PaymentProcessor {".
      */
     public static final String CLASS_NAME_REGEX = "[A-Z][a-zA-Z0-9]*\\s*";
+
+     /**
+     * Regular expression to match quoted strings (single or double quotes).
+     * Example: "\"Hello, World!\"", "'Hello'".
+     */
+    public static final String QUOTED_STRING_REGEX = "\"[^\"]*\"|'[^']*'";
 }

@@ -78,6 +78,7 @@ public class GoogleJavaFormatUtil {
     int lineNumber, 
     String fileName
     ) throws FileFormatException {
+    line = line.replaceAll(JavaRegexConstants.QUOTED_STRING_REGEX, SymbolsConstants.SPACE);
     if (line.contains(SymbolsConstants.OPENING_BRACE)
       && !line.trim().endsWith(SymbolsConstants.OPENING_BRACE)) {
         throw new FileFormatException(fileName, lineNumber, 
