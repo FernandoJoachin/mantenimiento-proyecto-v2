@@ -31,6 +31,6 @@ public class MethodCounterUtilTest {
         }
 
         
-        assertEquals(2, counter.getCounter(), "Expected 2 method declarations.");
+        assertEquals(2, counter.getCount(), "Expected 2 method declarations.");
     }
 }

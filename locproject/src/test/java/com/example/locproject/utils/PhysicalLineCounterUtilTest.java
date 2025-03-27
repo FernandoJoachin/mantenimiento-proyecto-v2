@@ -34,7 +34,7 @@ public class PhysicalLineCounterUtilTest {
         }
 
      
-        assertEquals(3, lineCounter.getCounter(), "Se esperaban 3 líneas físicas.");
+        assertEquals(3, lineCounter.getCount(), "Se esperaban 3 líneas físicas.");
     }
 
     
@@ -52,7 +52,7 @@ public class PhysicalLineCounterUtilTest {
             lineCounter.count(line);
         }
 
-        assertEquals(3, lineCounter.getCounter(), "Se esperaban 3 líneas físicas.");
+        assertEquals(3, lineCounter.getCount(), "Se esperaban 3 líneas físicas.");
     }
 
 
@@ -70,7 +70,7 @@ public class PhysicalLineCounterUtilTest {
         }
 
 
-        assertEquals(3, lineCounter.getCounter(), "Se esperaban 3 líneas físicas.");
+        assertEquals(3, lineCounter.getCount(), "Se esperaban 3 líneas físicas.");
     }
 
 
@@ -88,6 +88,6 @@ public class PhysicalLineCounterUtilTest {
         }
 
 
-        assertEquals(2, lineCounter.getCounter(), "Se esperaban 2 líneas físicas.");
+        assertEquals(2, lineCounter.getCount(), "Se esperaban 2 líneas físicas.");
     }
 }

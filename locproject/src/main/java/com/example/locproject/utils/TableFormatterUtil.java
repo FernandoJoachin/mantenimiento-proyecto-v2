@@ -8,12 +8,13 @@ import com.example.locproject.constants.SymbolsConstants;
  * Utility class for formatting data into a table.
  * Provides methods to calculate column widths, create header formats, and build table separators.
  */
-public class TableFormatter {
+public class TableFormatterUtil {
 
     /**
      * Template for formatting each column in a row.
      */
-    private static final String COLUMN_FORMAT_TEMPLATE = "| %%-%ds | %%-%ds | %%-%ds | %%-%ds | %%-%ds |\n";
+    private static final String COLUMN_FORMAT_TEMPLATE = 
+    "| %%-%ds | %%-%ds | %%-%ds | %%-%ds | %%-%ds |\n";
     
     /**
      * The horizontal padding added to each column width.
@@ -86,7 +87,8 @@ public class TableFormatter {
     private static String createSeparator(int... widths) {
         StringBuilder separator = new StringBuilder(SymbolsConstants.PLUS_SIGN);
         for (int width : widths) {
-            separator.append(SymbolsConstants.MINUS_SIGN.repeat(width + HORIZONTAL_PADDING)).append(SymbolsConstants.PLUS_SIGN);
+            separator.append(SymbolsConstants.MINUS_SIGN.repeat(width + HORIZONTAL_PADDING))
+                .append(SymbolsConstants.PLUS_SIGN);
         }
         return separator.append("\n").toString();
     }

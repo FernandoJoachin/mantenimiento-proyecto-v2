@@ -16,8 +16,12 @@ public class FileFormatException extends Exception {
      * @param errorMessage A specific message describing the error.
      * @param lineContent  The content of the line where the error was found.
      */
-    public FileFormatException(String fileName, int lineNumber, 
-                               String errorMessage, String lineContent) {
+    public FileFormatException(
+        String fileName, 
+        int lineNumber, 
+        String errorMessage, 
+        String lineContent
+        ) {
         super(createMessage(fileName, lineNumber, errorMessage, lineContent));
     }
 
@@ -30,8 +34,12 @@ public class FileFormatException extends Exception {
      * @param content      The content of the line with the error.
      * @return A formatted string that combines the provided details.
      */
-    private static String createMessage(String fileName, int line, 
-                                        String errorMessage, String content) {
+    private static String createMessage(
+        String fileName, 
+        int line, 
+        String errorMessage, 
+        String content
+        ) {
         return String.format(
             "[%s] Line %d - %s | Content: '%s'",
             fileName,
