@@ -31,10 +31,7 @@ public class LOCAnalyzerService {
    * @param physicalLineCounter Utility to count physical lines of code.
    * @param methodCounter       Utility to count methods.
    */
-  public LOCAnalyzerService(
-    PhysicalLineCounterUtil physicalLineCounter,
-    MethodCounterUtil methodCounter
-  ) {
+  public LOCAnalyzerService(PhysicalLineCounterUtil physicalLineCounter, MethodCounterUtil methodCounter) {
     this.physicalLineCounter = physicalLineCounter;
     this.methodCounter = methodCounter;
   }

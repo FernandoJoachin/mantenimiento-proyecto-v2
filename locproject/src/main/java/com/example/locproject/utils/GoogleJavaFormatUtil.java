@@ -73,11 +73,7 @@ public class GoogleJavaFormatUtil {
    * @return {@code true} if the brace style is valid.
    * @throws FileFormatException if the brace style is invalid.
    */
-  private boolean validateBraceStyle(
-    String line, 
-    int lineNumber, 
-    String fileName
-    ) throws FileFormatException {
+  private boolean validateBraceStyle(String line, int lineNumber, String fileName) throws FileFormatException {
     line = line.replaceAll(JavaRegexConstants.QUOTED_STRING_REGEX, SymbolsConstants.SPACE);
     if (line.contains(SymbolsConstants.OPENING_BRACE)
       && !line.trim().endsWith(SymbolsConstants.OPENING_BRACE)) {
@@ -97,11 +93,7 @@ public class GoogleJavaFormatUtil {
    * @return {@code true} if the class brace style is valid.
    * @throws FileFormatException if the class brace style is invalid.
    */
-  private boolean validateClassBraceStyle(
-    String line, 
-    int lineNumber, 
-    String fileName
-    ) throws FileFormatException {
+  private boolean validateClassBraceStyle(String line, int lineNumber, String fileName) throws FileFormatException {
       Pattern classPattern = Pattern.compile(
           JavaRegexConstants.STRUCT_DECLARATION_REGEX + 
           JavaRegexConstants.CLASS_NAME_REGEX
@@ -124,11 +116,7 @@ public class GoogleJavaFormatUtil {
    * @return {@code true} if the method brace style is valid.
    * @throws FileFormatException if the method brace style is invalid.
    */
-  private boolean validateMethodBraceStyle(
-    String line, 
-    int lineNumber, 
-    String fileName
-    ) throws FileFormatException {
+  private boolean validateMethodBraceStyle(String line, int lineNumber, String fileName) throws FileFormatException {
       Pattern methodPattern = Pattern.compile(
           JavaRegexConstants.METHOD_DECLARATION_REGEX
       );
@@ -149,11 +137,7 @@ public class GoogleJavaFormatUtil {
    * @return {@code true} if the line length is within the allowed limit.
    * @throws FileFormatException if the line exceeds the maximum allowed length.
    */
-  private boolean validateLineLength(
-    String line, 
-    int lineNumber, 
-    String fileName
-    ) throws FileFormatException {
+  private boolean validateLineLength(String line, int lineNumber, String fileName) throws FileFormatException {
       if (line.length() > FileFormatConstants.MAX_LINE_LENGTH) {
           throw new FileFormatException(fileName, lineNumber, 
               FileFormatConstants.INVALID_LINE_LENGTH_MESSAGE, line);
@@ -171,11 +155,7 @@ public class GoogleJavaFormatUtil {
    * @return {@code true} if the indentation is valid.
    * @throws FileFormatException if the indentation is invalid.
    */
-  private boolean validateIndentation(
-    String line, 
-    int lineNumber, 
-    String fileName
-    ) throws FileFormatException {
+  private boolean validateIndentation(String line, int lineNumber, String fileName) throws FileFormatException {
       String trimmedLine = line.trim();
       if (!line.isBlank() 
         && line.startsWith(SymbolsConstants.SPACE) 
