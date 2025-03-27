@@ -9,11 +9,28 @@ import com.example.locproject.models.JavaProgram;
 import com.example.locproject.utils.MethodCounterUtil;
 import com.example.locproject.utils.PhysicalLineCounterUtil;
 
+/**
+ * Service class responsible for analyzing the lines of code (LOC) in a Java program.
+ * It counts the number of physical LOC and methods in each Java class.
+ */
 public class LOCAnalyzerService {
   
+  /**
+   * Utility to count physical lines of code.
+   */
   private PhysicalLineCounterUtil physicalLineCounter;
+  
+  /**
+   * Utility to count methods.
+   */
   private MethodCounterUtil methodCounter;
 
+  /**
+   * Constructs an LOCAnalyzerService instance.
+   * 
+   * @param physicalLineCounter Utility to count physical lines of code.
+   * @param methodCounter       Utility to count methods.
+   */
   public LOCAnalyzerService(
     PhysicalLineCounterUtil physicalLineCounter,
     MethodCounterUtil methodCounter
@@ -22,6 +39,12 @@ public class LOCAnalyzerService {
     this.methodCounter = methodCounter;
   }
 
+  /**
+   * Analyzes the lines of code in a given Java program.
+   * 
+   * @param javaProgram The Java program to analyze.
+   * @return The analyzed Java program with updated LOC metrics.
+   */
   public JavaProgram analiyzeLOCJavaProgram(JavaProgram javaProgram) {
     JavaProgram programToBeAnalyzed = javaProgram;
 
@@ -35,6 +58,12 @@ public class LOCAnalyzerService {
     return programToBeAnalyzed;
   }
 
+  /**
+   * Calculates metrics for a specific Java class, including physical LOC and method count.
+   * 
+   * @param javaClass The Java class to analyze.
+   * @return The analyzed Java class with updated metrics.
+   */
   private JavaClass calculateMetricsJavaClass(JavaClass javaClass) {
     JavaClass classToBeAnalyzed = javaClass;
 
@@ -58,6 +87,12 @@ public class LOCAnalyzerService {
     return classToBeAnalyzed;
   }
 
+  /**
+   * Counts the total number of physical lines of code in a Java program.
+   * 
+   * @param javaProgram The Java program to analyze.
+   * @return The total physical LOC of the program.
+   */
   private int countSLOCProgram(JavaProgram javaProgram) {
     JavaProgram project = javaProgram;
     int totalLOCProgram = 0;
