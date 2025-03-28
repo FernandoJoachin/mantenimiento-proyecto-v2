@@ -54,6 +54,12 @@ public class JavaRegexConstants {
     "(?:(?:static\\s+)?(?:final\\s+)?|(?:final\\s+)?(?:static\\s+)?)?";
 
     /**
+     * Regular expression to match class names according to naming conventions.
+     * Example: "class MyClass {", "interface PaymentProcessor {".
+     */
+    public static final String CLASS_NAME_REGEX = "[A-Z][a-zA-Z0-9]*\\s*";
+
+    /**
      * Regular expression to match method declarations, including access modifiers,
      * return type, method name, parameters, and throws clause.
      * Example: "public static void main(String[] args) throws Exception".
@@ -65,12 +71,18 @@ public class JavaRegexConstants {
         IDENTIFIER_DECLARATION_REGEX +     
         PARAMETERS_DECLARATION_REGEX +     
         THROWS_DECLARATION_REGEX;
-
+    
     /**
-     * Regular expression to match class names according to naming conventions.
-     * Example: "class MyClass {", "interface PaymentProcessor {".
-     */
-    public static final String CLASS_NAME_REGEX = "[A-Z][a-zA-Z0-9]*\\s*";
+     * Regular expression to match constructor declarations, including access modifiers,
+     * class name (as constructor name), parameters, and throws clause.
+     * Example: "public MyClass(int param) throws Exception"
+    */
+    public static final String CONSTRUCTOR_DECLARATION_REGEX = 
+        ACCESS_MODIFIERS_REGEX +        
+        CLASS_NAME_REGEX +              
+        PARAMETERS_DECLARATION_REGEX + 
+        THROWS_DECLARATION_REGEX;       
+
 
      /**
      * Regular expression to match quoted strings (single or double quotes).

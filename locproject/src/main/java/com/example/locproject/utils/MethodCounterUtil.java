@@ -29,7 +29,11 @@ public class MethodCounterUtil extends Counter {
      * @return {@code true} if the line matches the method declaration pattern, {@code false} otherwise.
      */
     private boolean isMethod(String line) {
-        Pattern pattern = Pattern.compile(JavaRegexConstants.METHOD_DECLARATION_REGEX);
+        Pattern pattern = Pattern.compile(
+            JavaRegexConstants.METHOD_DECLARATION_REGEX + 
+            "|" +
+            JavaRegexConstants.CONSTRUCTOR_DECLARATION_REGEX
+        );
         return pattern.matcher(line).find();
     }
 }
