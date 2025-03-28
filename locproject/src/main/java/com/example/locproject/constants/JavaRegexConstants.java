@@ -89,4 +89,14 @@ public class JavaRegexConstants {
      * Example: "\"Hello, World!\"", "'Hello'".
      */
     public static final String QUOTED_STRING_REGEX = "\"[^\"]*\"|'[^']*'";
+
+    /**
+     * Regular expression to match import statements (both regular and wildcard).
+     * Examples: 
+     * - "import java.util.List;"
+     * - "import java.util.*;"
+     * - "import static java.util.Collections.emptyList;"
+     */
+    public final static String IMPORT_REGEX 
+        = "^\\s*import\\s+(static\\s+)?[a-zA-Z0-9_.]+\\.(\\*|[a-zA-Z0-9_]+)\\s*;$";
 }

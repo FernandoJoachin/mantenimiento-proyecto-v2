@@ -138,11 +138,35 @@ public class GoogleJavaFormatUtil {
    * @throws FileFormatException if the line exceeds the maximum allowed length.
    */
   private boolean validateLineLength(String line, int lineNumber, String fileName) throws FileFormatException {
-      if (line.length() > FileFormatConstants.MAX_LINE_LENGTH) {
+      if(!isLengthCheckException(line)){
+        if (line.length() > FileFormatConstants.MAX_LINE_LENGTH) {
           throw new FileFormatException(fileName, lineNumber, 
               FileFormatConstants.INVALID_LINE_LENGTH_MESSAGE, line);
+        }
       }
       return true;
+  }
+
+  /**
+   * Checks if a line should be exempt from line length validation.
+   * 
+   * @param line The line to check for exemption.
+   * @return {@code true} if the line should be exempt from length checking.
+  */
+  private boolean isLengthCheckException(String line) {
+    String normalizedLine = line.trim().replaceAll("\\s+", " ");
+    
+    Pattern pattern = Pattern.compile(
+      "\\b(?:" + 
+      JavaRegexConstants.METHOD_DECLARATION_REGEX + 
+      "|" + 
+      JavaRegexConstants.CONSTRUCTOR_DECLARATION_REGEX + 
+      "|" + 
+      JavaRegexConstants.IMPORT_REGEX + 
+      ")"
+    );
+    
+    return pattern.matcher(normalizedLine).find();
   }
 
   /**
