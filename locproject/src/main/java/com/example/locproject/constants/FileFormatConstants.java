@@ -35,6 +35,12 @@ public class FileFormatConstants {
     public static final String INVALID_INDENTATION_MESSAGE = "Incorrect indentation";
 
     /**
+     * Error message format for when multiple public classes are found in a single file
+     */
+    public static final String MULTIPLE_PUBLIC_CLASSES_MESSAGE = 
+        "Only one public class is allowed per file";
+
+    /**
      * The maximum allowed length for a single line of code.
      */
     public static final int MAX_LINE_LENGTH = 100;

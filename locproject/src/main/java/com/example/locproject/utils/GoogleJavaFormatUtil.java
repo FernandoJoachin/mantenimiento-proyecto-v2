@@ -46,11 +46,19 @@ public class GoogleJavaFormatUtil {
    */
   private boolean validateFormat(List<String> lines, String fileName) throws FileFormatException {
     boolean isValid = true;
+    boolean publicDeclarationFound = false;
     CommentValidator commentValidator = new CommentValidator();
     for (int i = 0; i < lines.size(); i++) {
       String line = lines.get(i);
       int lineNumber = i + 1;
       if (!commentValidator.isComment(line)) {
+        if (isPublicDeclaration(line)) {
+          if (publicDeclarationFound) {
+              throw new FileFormatException(fileName, lineNumber,
+                  FileFormatConstants.MULTIPLE_PUBLIC_CLASSES_MESSAGE, line);
+          }
+          publicDeclarationFound = true;
+        }
         if (!validateBraceStyle(line, lineNumber, fileName) || 
             !validateClassBraceStyle(line, lineNumber, fileName) ||
             !validateMethodBraceStyle(line, lineNumber, fileName) || 
@@ -62,6 +70,20 @@ public class GoogleJavaFormatUtil {
     }
     return isValid;
   }
+
+  /**
+ * Checks if the line contains a public class declaration.
+ * Detects standard public classes as well as abstract and final public classes.
+ * 
+ * @param line the source code line to evaluate (must not be null)
+ * @return true if the line contains a public class declaration,
+ *         false otherwise
+ */
+private boolean isPublicDeclaration(String line) {
+  line = line.trim();
+  Pattern publicClassPattern = Pattern.compile(JavaRegexConstants.PUBLIC_TYPE_DECLARATION_REGEX);
+  return publicClassPattern.matcher(line).find();
+}
 
   /**
    * Validates the brace style for a given line.

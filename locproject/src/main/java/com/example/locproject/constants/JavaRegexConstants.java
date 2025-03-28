@@ -99,4 +99,16 @@ public class JavaRegexConstants {
      */
     public final static String IMPORT_REGEX 
         = "^\\s*import\\s+(static\\s+)?[a-zA-Z0-9_.]+\\.(\\*|[a-zA-Z0-9_]+)\\s*;$";
+
+    /**
+     * Regular expression to match public class/interface/enum declarations, including optional
+     * abstract or final modifiers (for classes only).
+     * Examples:
+     * - "public class MyClass"
+     * - "public abstract class MyAbstractClass"
+     * - "public interface MyInterface"
+     * - "public enum MyEnum"
+     */
+    public static final String PUBLIC_TYPE_DECLARATION_REGEX = 
+        "^public\\s+(?:(?:abstract\\s+|final\\s+)?class\\s+|interface\\s+|enum\\s+)\\w+";
 }
