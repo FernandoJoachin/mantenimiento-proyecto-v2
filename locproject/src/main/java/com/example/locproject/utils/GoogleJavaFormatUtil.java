@@ -46,18 +46,18 @@ public class GoogleJavaFormatUtil {
    */
   private boolean validateFormat(List<String> lines, String fileName) throws FileFormatException {
     boolean isValid = true;
-    boolean publicDeclarationFound = false;
+    boolean declarationFound = false;
     CommentValidator commentValidator = new CommentValidator();
     for (int i = 0; i < lines.size(); i++) {
       String line = lines.get(i);
       int lineNumber = i + 1;
       if (!commentValidator.isComment(line)) {
-        if (isPublicDeclaration(line)) {
-          if (publicDeclarationFound) {
+        if (isClassInterfaceEnumDeclaration(line)) {
+          if (declarationFound) {
               throw new FileFormatException(fileName, lineNumber,
                   FileFormatConstants.MULTIPLE_PUBLIC_CLASSES_MESSAGE, line);
           }
-          publicDeclarationFound = true;
+          declarationFound = true;
         }
         if (!validateBraceStyle(line, lineNumber, fileName) || 
             !validateClassBraceStyle(line, lineNumber, fileName) ||
@@ -79,9 +79,11 @@ public class GoogleJavaFormatUtil {
  * @return true if the line contains a public class declaration,
  *         false otherwise
  */
-private boolean isPublicDeclaration(String line) {
+private boolean isClassInterfaceEnumDeclaration(String line) {
   line = line.trim();
-  Pattern publicClassPattern = Pattern.compile(JavaRegexConstants.PUBLIC_TYPE_DECLARATION_REGEX);
+  Pattern publicClassPattern = Pattern.compile(
+    JavaRegexConstants.CLASS_INTERFACE_ENUM_DECLARATION_REGEX
+  );
   return publicClassPattern.matcher(line).find();
 }
 

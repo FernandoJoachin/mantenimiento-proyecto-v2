@@ -109,6 +109,11 @@ public class JavaRegexConstants {
      * - "public interface MyInterface"
      * - "public enum MyEnum"
      */
-    public static final String PUBLIC_TYPE_DECLARATION_REGEX = 
-        "^public\\s+(?:(?:abstract\\s+|final\\s+)?class\\s+|interface\\s+|enum\\s+)\\w+";
+    public static final String CLASS_INTERFACE_ENUM_DECLARATION_REGEX = 
+        "^" + 
+        ACCESS_MODIFIERS_REGEX +       
+        FINAL_OR_STATIC_REGEX +        
+        "(abstract\\s+)?" +           
+        STRUCT_DECLARATION_REGEX +    
+        CLASS_NAME_REGEX;              
 }
