@@ -10,6 +10,37 @@ import com.example.locproject.utils.MethodCounterUtil;
 import com.example.locproject.utils.PhysicalLineCounterUtil;
 
 /**
+ * ========================================================================================
+ *                                              CHANGELOG
+ * ========================================================================================
+ * 
+ * FECHA         : 31-March-2025
+ * VERSIÓN       : 2.0.0 (Release Estable)
+ * AUTOR         : [Equipo 4]
+ * 
+ * =====================================[ DETAIL OF MODIFICATIONS ]=====================================
+ * 
+ * [REFACTOR] ┃ A long method was identified in the checkline method. 
+ *             → Affected methods: checkLine(),
+ *             → New class: PhysicalLineCounterUtil.java, Counter.java, JavaRegexConstants.java
+ * 
+ * [FEATURE]  ┃ Method counting logic was implemented
+ *             → Affected methods: checkLine()
+ *             → New methods: countSLOCProgram()
+ *             → Name changes: checkLine() -> calculateMetricsJavaClass(), 
+ *                             countLinesOfCode() -> analiyzeLOCJavaProgram()
+ *             → New class: MethodCounter.java, JavaClass.java, JavaProgram.java
+ *         
+ * [REFACTOR] ┃ A large class was identified in what was formerly LOCAnalyzerUtil. 
+ *             → Affected methods: saveResults()
+ *             → New class: ResultPrinterUtil.java,TabletFormatUtil.java
+ *                
+ * 
+ * ======================================================================================================
+ */
+/**
+
+/**
  * Service class responsible for analyzing the lines of code (LOC) in a Java program.
  * It counts the number of physical LOC and methods in each Java class.
  */

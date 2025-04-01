@@ -14,6 +14,34 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 /**
+ * ========================================================================================
+ *                                              CHANGELOG
+ * ========================================================================================
+ * 
+ * FECHA         : 31-March-2025
+ * VERSIÓN       : 2.0.0 (Release Estable)
+ * AUTOR         : [Equipo 4]
+ * 
+ * =====================================[ DETAIL OF MODIFICATIONS ]=====================================
+ * 
+ * [FEATURE]  ┃ Implementing validation of multiple class declarations, interfaces, or enums 
+ *             → Affected methods: ValidateFormat()
+ *             → New methods: isClassInterfaceEnumDeclaration()
+ * 
+ * [FEATURE]  ┃ Implementing exception cases in the validateLineLength method
+ *             → Affected methods: validateLineLength()
+ *             → New methods: isLengthCheckException()
+ * 
+ * [REFACTOR] ┃ A long method was identified in validateFormat. Moreover, 
+ *              implementation of messages when a validation fails
+ *             → Affected methods: ValidateFormat()
+ *             → New methods: validateClassBraceStyle(), validateMethodBraceStyle(),
+ *               validateLineLength(), validateIndentation()
+ * 
+ * ======================================================================================================
+ */
+
+/**
  * Utility class to validate the formatting of Java files according to Google's Java style.
  * It checks for correct brace placement, class and method brace styles, line lengths, and indentation.
  */
