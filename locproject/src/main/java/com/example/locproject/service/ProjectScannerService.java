@@ -7,6 +7,23 @@ import com.example.locproject.models.JavaProgram;
 import com.example.locproject.utils.GoogleJavaFormatUtil;
 
 /**
+ * ========================================================================================
+ *                                              CHANGELOG
+ * ========================================================================================
+ * 
+ * FECHA         : 31-March-2025
+ * VERSIÓN       : 2.0.0 (Release Estable)
+ * AUTOR         : [Equipo 4]
+ * 
+ * =====================================[ DETAIL OF MODIFICATIONS ]=====================================
+ * 
+ * [REFACTOR] ┃ The class has been updated to work with the new models. 
+ *             → Affected methods: scanDirectory()
+ *             → New methods: getJavaProgram()
+ * 
+ * ======================================================================================================
+ */
+/**
  * Service class responsible for scanning a directory to identify Java files and create a Java program representation.
  */
 public class ProjectScannerService {
