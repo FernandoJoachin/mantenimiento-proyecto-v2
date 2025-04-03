@@ -34,7 +34,7 @@ public class PhysicalLineCounterUtilTest {
         }
 
      
-        assertEquals(3, lineCounter.getCount(), "Se esperaban 3 líneas físicas.");
+        assertEquals(4, lineCounter.getCount(), "Se esperaban 4 líneas físicas.");
     }
 
     

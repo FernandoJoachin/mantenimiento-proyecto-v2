@@ -1,24 +1,24 @@
-package files.files2;
-
+// Main class
 public class Example {
-    // Single-line comment
-
-    /* 
-    * Multi-line comment
-    * This should not be counted as a logical line
-    */
-    
     public static void main(String[] args) {
-        System.out.println("Hello, world!");
+        Car myCar = new Car("Toyota", 2023);
+        myCar.displayDetails();
+    }
+}
+
+// Second class in the same file
+class Car {
+    private String brand;
+    private int year;
+
+    // Constructor
+    public Car(String brand, int year) {
+        this.brand = brand;
+        this.year = year;
     }
 
-    public void methodOne() {
-        int x = 10;
-        int y = 20;
-        System.out.println(x + y);
-    }
-
-    public int methodTwo(int a, int b) {
-        return a + b;
+    // Method to display car details
+    public void displayDetails() {
+        System.out.println("Brand: " + brand + ", Year: " + year);
     }
 }

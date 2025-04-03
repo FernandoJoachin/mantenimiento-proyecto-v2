@@ -14,9 +14,12 @@ public class MethodCounterUtilTest {
         String[] lines = {
             "public class Example {",  
             "    // This is a comment",  
+            "    public Example() {", 
+            "        // Some code",
+            "    }",  
             "    public void exampleMethod() {", 
             "        // Some code",
-            "    }",  // End of method
+            "    }",  
             "    public int anotherMethod(int x) {", 
             "        return x;", 
             "    }", 
@@ -31,6 +34,6 @@ public class MethodCounterUtilTest {
         }
 
         
-        assertEquals(2, counter.getCount(), "Expected 2 method declarations.");
+        assertEquals(3, counter.getCount(), "Expected 3 method declarations.");
     }
 }

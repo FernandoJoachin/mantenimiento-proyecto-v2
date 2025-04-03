@@ -32,7 +32,9 @@ public class MethodCounterUtil extends Counter {
         Pattern pattern = Pattern.compile(
             JavaRegexConstants.METHOD_DECLARATION_REGEX + 
             "|" +
-            JavaRegexConstants.CONSTRUCTOR_DECLARATION_REGEX
+            JavaRegexConstants.CONSTRUCTOR_DECLARATION_REGEX +
+            "|" +
+            JavaRegexConstants.INTERFACE_METHOD_REGEX
         );
         return pattern.matcher(line).find();
     }
