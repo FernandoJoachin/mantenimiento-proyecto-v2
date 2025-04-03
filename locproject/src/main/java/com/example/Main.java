@@ -33,7 +33,10 @@ public class Main {
 
     PhysicalLineCounterUtil physicalLineCounter = new PhysicalLineCounterUtil();
     MethodCounterUtil methodCounterUtil = new MethodCounterUtil();
-    LOCAnalyzerService locAnalyzerUtil = new LOCAnalyzerService(physicalLineCounter, methodCounterUtil);
+    LOCAnalyzerService locAnalyzerUtil = new LOCAnalyzerService(
+      physicalLineCounter, 
+      methodCounterUtil
+    );
     javaProgram = locAnalyzerUtil.analiyzeLOCJavaProgram(javaProgram);
 
     ResultPrinterUtil.printResults("output", javaProgram);

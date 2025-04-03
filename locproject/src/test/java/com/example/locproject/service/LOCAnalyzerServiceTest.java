@@ -31,7 +31,10 @@ public class LOCAnalyzerServiceTest {
   public void setUp() {
     physicalLineCounter = new PhysicalLineCounterUtil();
     methodCounter = new MethodCounterUtil();
-    locAnalyzerService = new LOCAnalyzerService(physicalLineCounter, methodCounter);
+    locAnalyzerService = new LOCAnalyzerService(
+      physicalLineCounter, 
+      methodCounter
+    );
   }
 
   @Test
@@ -107,7 +110,7 @@ public class LOCAnalyzerServiceTest {
     assertEquals(
       3, 
       result.getClasses().get(0).getTotalNumberOfMethods(),
-     "The number of methods in Test1.java does not match"
+      "The number of methods in Test1.java does not match"
     );
 
     assertEquals(

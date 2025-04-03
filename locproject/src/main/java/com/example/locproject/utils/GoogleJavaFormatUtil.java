@@ -100,6 +100,19 @@ public class GoogleJavaFormatUtil {
   }
 
   /**
+   * Removes string literals from a line of code.
+   *
+   * @param line The line of code.
+   * @return The modified line without string literals.
+   */
+  private static String deleteStringInsideCode(String line) {
+    return line.replaceAll(
+      JavaRegexConstants.QUOTED_STRING_REGEX, 
+      SymbolsConstants.SPACE
+    ).trim();
+  }
+
+  /**
  * Checks if the line contains a public class declaration.
  * Detects standard public classes as well as abstract and final public classes.
  * 
@@ -108,11 +121,11 @@ public class GoogleJavaFormatUtil {
  *         false otherwise
  */
 private boolean isClassInterfaceEnumDeclaration(String line) {
-  line = line.trim();
+  String currentLine = deleteStringInsideCode(line);
   Pattern publicClassPattern = Pattern.compile(
     JavaRegexConstants.CLASS_INTERFACE_ENUM_DECLARATION_REGEX
   );
-  return publicClassPattern.matcher(line).find();
+  return publicClassPattern.matcher(currentLine).find();
 }
 
   /**
@@ -126,11 +139,11 @@ private boolean isClassInterfaceEnumDeclaration(String line) {
    * @throws FileFormatException if the brace style is invalid.
    */
   private boolean validateBraceStyle(String line, int lineNumber, String fileName) throws FileFormatException {
-    line = line.replaceAll(JavaRegexConstants.QUOTED_STRING_REGEX, SymbolsConstants.SPACE);
-    if (line.contains(SymbolsConstants.OPENING_BRACE)
-      && !line.trim().endsWith(SymbolsConstants.OPENING_BRACE)) {
+    String currentLine = deleteStringInsideCode(line);
+    if (currentLine.contains(SymbolsConstants.OPENING_BRACE)
+      && !currentLine.trim().endsWith(SymbolsConstants.OPENING_BRACE)) {
         throw new FileFormatException(fileName, lineNumber, 
-            FileFormatConstants.INVALID_BRACE_STYLE_MESSAGE, line);
+            FileFormatConstants.INVALID_BRACE_STYLE_MESSAGE, currentLine);
     }
     return true;
   }
@@ -146,16 +159,17 @@ private boolean isClassInterfaceEnumDeclaration(String line) {
    * @throws FileFormatException if the class brace style is invalid.
    */
   private boolean validateClassBraceStyle(String line, int lineNumber, String fileName) throws FileFormatException {
-      Pattern classPattern = Pattern.compile(
-          JavaRegexConstants.STRUCT_DECLARATION_REGEX + 
-          JavaRegexConstants.CLASS_NAME_REGEX
-      );
-      if (classPattern.matcher(line).find() 
-        && !line.trim().endsWith(SymbolsConstants.OPENING_BRACE)) {
-          throw new FileFormatException(fileName, lineNumber, 
-              FileFormatConstants.INVALID_CLASS_BRACE_STYLE_MESSAGE, line);
-      }
-      return true;
+    String currentLine = deleteStringInsideCode(line);
+    Pattern classPattern = Pattern.compile(
+      JavaRegexConstants.STRUCT_DECLARATION_REGEX + 
+      JavaRegexConstants.CLASS_NAME_REGEX
+    );
+    if (classPattern.matcher(currentLine).find() 
+      && !line.trim().endsWith(SymbolsConstants.OPENING_BRACE)) {
+        throw new FileFormatException(fileName, lineNumber, 
+          FileFormatConstants.INVALID_CLASS_BRACE_STYLE_MESSAGE, currentLine);
+    }
+    return true;
   }
 
   /**
@@ -169,15 +183,16 @@ private boolean isClassInterfaceEnumDeclaration(String line) {
    * @throws FileFormatException if the method brace style is invalid.
    */
   private boolean validateMethodBraceStyle(String line, int lineNumber, String fileName) throws FileFormatException {
-      Pattern methodPattern = Pattern.compile(
-          JavaRegexConstants.METHOD_DECLARATION_REGEX
-      );
-      if (methodPattern.matcher(line).find() 
-        && !line.trim().endsWith(SymbolsConstants.OPENING_BRACE)) {
-          throw new FileFormatException(fileName, lineNumber, 
-              FileFormatConstants.INVALID_METHOD_BRACE_STYLE_MESSAGE, line);
-      }
-      return true;
+    String currentLine = deleteStringInsideCode(line);
+    Pattern methodPattern = Pattern.compile(
+      JavaRegexConstants.METHOD_DECLARATION_REGEX
+    );
+    if (methodPattern.matcher(currentLine).find() 
+      && !line.trim().endsWith(SymbolsConstants.OPENING_BRACE)) {
+        throw new FileFormatException(fileName, lineNumber, 
+          FileFormatConstants.INVALID_METHOD_BRACE_STYLE_MESSAGE, currentLine);
+    }
+    return true;
   }
 
   /**
@@ -190,13 +205,13 @@ private boolean isClassInterfaceEnumDeclaration(String line) {
    * @throws FileFormatException if the line exceeds the maximum allowed length.
    */
   private boolean validateLineLength(String line, int lineNumber, String fileName) throws FileFormatException {
-      if(!isLengthCheckException(line)){
-        if (line.length() > FileFormatConstants.MAX_LINE_LENGTH) {
-          throw new FileFormatException(fileName, lineNumber, 
-              FileFormatConstants.INVALID_LINE_LENGTH_MESSAGE, line);
-        }
+    if(!isLengthCheckException(line)){
+      if (line.length() > FileFormatConstants.MAX_LINE_LENGTH) {
+        throw new FileFormatException(fileName, lineNumber, 
+          FileFormatConstants.INVALID_LINE_LENGTH_MESSAGE, line);
       }
-      return true;
+    }
+    return true;
   }
 
   /**
@@ -232,14 +247,14 @@ private boolean isClassInterfaceEnumDeclaration(String line) {
    * @throws FileFormatException if the indentation is invalid.
    */
   private boolean validateIndentation(String line, int lineNumber, String fileName) throws FileFormatException {
-      String trimmedLine = line.trim();
-      if (!line.isBlank() 
-        && line.startsWith(SymbolsConstants.SPACE) 
-        && (line.indexOf(trimmedLine) % 2) != 0) {
-          throw new FileFormatException(fileName, lineNumber, 
-              FileFormatConstants.INVALID_INDENTATION_MESSAGE, line);
-      }
-      return true;
+    String trimmedLine = line.trim();
+    if (!line.isBlank() 
+      && line.startsWith(SymbolsConstants.SPACE) 
+      && (line.indexOf(trimmedLine) % 2) != 0) {
+        throw new FileFormatException(fileName, lineNumber, 
+          FileFormatConstants.INVALID_INDENTATION_MESSAGE, line);
+    }
+    return true;
   }
 
 }

@@ -56,7 +56,7 @@ public class GoogleJavaFormatUtilTest {
         List<String> lines = new ArrayList<>();
         lines.add("package com.example;");
         lines.add("");
-        lines.add("if (x > 0) { //"); // incorrect brace position
+        lines.add("if (x > 0) { int y = 5;"); // incorrect brace position
         lines.add("public class TestClass {"); 
         lines.add("  public void testMethod() {");
         lines.add("    System.out.println(\"Hello World\");");
@@ -94,7 +94,10 @@ public class GoogleJavaFormatUtilTest {
             }
         }
         boolean isValid = util.isFormatValid(tempFile);
-        assertFalse(isValid, "A file with a class declaration missing an opening brace should return false");
+        assertFalse(
+            isValid,
+            "A file with a class declaration missing an opening brace should return false"
+        );
     }
 
     @Test
@@ -117,7 +120,10 @@ public class GoogleJavaFormatUtilTest {
             }
         }
         boolean isValid = util.isFormatValid(tempFile);
-        assertFalse(isValid, "A file with a method declaration missing an opening brace should return false");
+        assertFalse(
+            isValid,
+            "A file with a method declaration missing an opening brace should return false"
+        );
     }
 
     @Test
