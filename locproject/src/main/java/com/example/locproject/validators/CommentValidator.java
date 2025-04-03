@@ -1,6 +1,11 @@
 package com.example.locproject.validators;
 
-
+/**
+ * Validator class to identify a comment.
+ * Provides functionality to determine whether
+ * a given line of code is a comment in Java source code. It recognizes both
+ * line comments (starting with //) and block comments (enclosed between /* and * /)..
+ */
 public class CommentValidator {
     /**
      * Regular expression to match line comments. A line comment starts with {@code //} and
