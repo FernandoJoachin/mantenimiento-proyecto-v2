@@ -16,10 +16,10 @@ public class JavaRegexConstants {
 
     /**
      * Regular expression to match data type declarations, including generics.
-     * Example: "String", "List<String>".
+     * Example: "String", "List<String>, int[], Map<String,Integer>".
      */
     public final static String DATATYPE_DECLARATION_REGEX = 
-    "(\\s*[a-zA-Z0-9]+(<[a-zA-Z0-9]+>)?\\s+)";
+    "(\\s*[a-zA-Z0-9]+(<[a-zA-Z0-9]+(\\s*,\\s*[a-zA-Z0-9]+)*>)?(\\[\\s*\\])*\\s+)";
 
     /**
      * Regular expression to match the "throws" clause in method declarations.
