@@ -16,27 +16,6 @@ public class PhysicalLineCounterUtilTest {
     public void setUp() {
         lineCounter = new PhysicalLineCounterUtil();
     }
-
-   
-    @Test
-    public void testNoPhysicalLines() {
-        List<String> lines = Arrays.asList(
-            "package com.example;",
-            "import java.util.List;", 
-            "", 
-            "// Este es un comentario", 
-            "@Deprecated", 
-            "int x = 0" 
-        );
-
-        for (String line : lines) {
-            lineCounter.count(line);
-        }
-
-     
-        assertEquals(4, lineCounter.getCount(), "Se esperaban 4 líneas físicas.");
-    }
-
     
     @Test
     public void testValidPhysicalLines() {

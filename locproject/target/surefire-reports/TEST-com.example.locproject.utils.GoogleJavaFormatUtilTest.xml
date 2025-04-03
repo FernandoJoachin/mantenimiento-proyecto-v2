@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.example.locproject.utils.GoogleJavaFormatUtilTest" time="0.163" tests="6" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.example.locproject.utils.GoogleJavaFormatUtilTest" time="0.063" tests="6" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,7 +15,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="MX"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-21\bin"/>
-    <property name="sun.java.command" value="C:\Users\Lenovo\AppData\Local\Temp\surefire12414060034762305238\surefirebooter-20250402184341677_3.jar C:\Users\Lenovo\AppData\Local\Temp\surefire12414060034762305238 2025-04-02T18-43-41_041-jvmRun1 surefire-20250402184341677_1tmp surefire_0-20250402184341677_2tmp"/>
+    <property name="sun.java.command" value="C:\Users\Lenovo\AppData\Local\Temp\surefire9144113916715354564\surefirebooter-20250402202603336_3.jar C:\Users\Lenovo\AppData\Local\Temp\surefire9144113916715354564 2025-04-02T20-26-02_947-jvmRun1 surefire-20250402202603336_1tmp surefire_0-20250402202603336_2tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="C:\Users\Lenovo\Documents\OctavoSemestre\Mantenimiento\proyecto\mantenimiento-proyecto-v2\locproject\target\test-classes;C:\Users\Lenovo\Documents\OctavoSemestre\Mantenimiento\proyecto\mantenimiento-proyecto-v2\locproject\target\classes;C:\Users\Lenovo\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.7.2\junit-jupiter-api-5.7.2.jar;C:\Users\Lenovo\.m2\repository\org\apiguardian\apiguardian-api\1.1.0\apiguardian-api-1.1.0.jar;C:\Users\Lenovo\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\Lenovo\.m2\repository\org\junit\platform\junit-platform-commons\1.7.2\junit-platform-commons-1.7.2.jar;C:\Users\Lenovo\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.7.2\junit-jupiter-engine-5.7.2.jar;C:\Users\Lenovo\.m2\repository\org\junit\platform\junit-platform-engine\1.7.2\junit-platform-engine-1.7.2.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -30,7 +30,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\Lenovo\AppData\Local\Temp\surefire12414060034762305238\surefirebooter-20250402184341677_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\Lenovo\AppData\Local\Temp\surefire9144113916715354564\surefirebooter-20250402202603336_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="21.0.6+8-LTS-188"/>
@@ -50,7 +50,7 @@
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
     <property name="sun.os.patch.level" value=""/>
     <property name="native.encoding" value="Cp1252"/>
-    <property name="java.library.path" value="C:\Program Files\Java\jdk-21\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files (x86)\Atmel\AVR Tools\AVR Toolchain\bin;C:\Program Files\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Users\Lenovo\AppData\Local\Programs\Python\Python311\Scripts\;C:\Users\Lenovo\AppData\Local\Programs\Python\Python311\;C:\Antlr\antlr-4.12.0-complete.jar;C:\ProgramData\chocolatey\bin;C:\wamp64\bin\php\php8.2.7;C:\ProgramData\ComposerSetup\bin;C:\Program Files\MySQL\MySQL Server 8.0\bin;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\dotnet\;C:\Users\Lenovo\Documents\apache-maven-3.9.5-bin\apache-maven-3.9.5\bin;C:\Program Files\Git\cmd;C:\Users\Lenovo\Desktop\sonarqube-10.2.1.78527\sonar-scanner-5.0.1.3006-windows\bin;C:\Users\Lenovo\AppData\Roaming\nvm;C:\Program Files\nodejs;C:\Program Files\Docker\Docker\resources\bin;C:\Program Files\Java\jdk-21\bin;C:\Program Files\MySQL\MySQL Shell 8.0\bin\;C:\Users\Lenovo\AppData\Local\Microsoft\WindowsApps;C:\Users\Lenovo\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Lenovo\AppData\Local\GitHubDesktop\bin;C:\Users\Lenovo\AppData\Local\gitkraken\bin;C:\Users\Lenovo\AppData\Roaming\npm;C:\Users\Lenovo\AppData\Roaming\Composer\vendor\bin;C:\Users\Lenovo\.dotnet\tools;C:\Users\Lenovo\AppData\Roaming\nvm;C:\Program Files\nodejs;C:\Program Files\Git\usr\bin;;."/>
+    <property name="java.library.path" value="C:\Program Files\Java\jdk-21\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files (x86)\Atmel\AVR Tools\AVR Toolchain\bin;C:\Program Files\Common Files\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Users\Lenovo\AppData\Local\Programs\Python\Python311\Scripts\;C:\Users\Lenovo\AppData\Local\Programs\Python\Python311\;C:\Antlr\antlr-4.12.0-complete.jar;C:\ProgramData\chocolatey\bin;C:\wamp64\bin\php\php8.2.7;C:\ProgramData\ComposerSetup\bin;C:\Program Files\MySQL\MySQL Server 8.0\bin;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\dotnet\;C:\Users\Lenovo\Documents\apache-maven-3.9.5-bin\apache-maven-3.9.5\bin;C:\Program Files\Git\cmd;C:\Users\Lenovo\Desktop\sonarqube-10.2.1.78527\sonar-scanner-5.0.1.3006-windows\bin;C:\Users\Lenovo\AppData\Roaming\nvm;C:\Program Files\nodejs;C:\Program Files\Docker\Docker\resources\bin;C:\Program Files\Java\jdk-19\bin;C:\Program Files\MySQL\MySQL Shell 8.0\bin\;C:\Users\Lenovo\AppData\Local\Microsoft\WindowsApps;C:\Users\Lenovo\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Lenovo\AppData\Local\GitHubDesktop\bin;C:\Users\Lenovo\AppData\Local\gitkraken\bin;C:\Users\Lenovo\AppData\Roaming\npm;C:\Users\Lenovo\AppData\Roaming\Composer\vendor\bin;C:\Users\Lenovo\.dotnet\tools;C:\Users\Lenovo\AppData\Roaming\nvm;C:\Program Files\nodejs;C:\Program Files\Git\usr\bin;;."/>
     <property name="java.vm.info" value="mixed mode, sharing"/>
     <property name="stderr.encoding" value="Cp1252"/>
     <property name="java.vendor" value="Oracle Corporation"/>
@@ -58,25 +58,25 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="65.0"/>
   </properties>
-  <testcase name="testMethodBraceError" classname="com.example.locproject.utils.GoogleJavaFormatUtilTest" time="0.051">
-    <system-err><![CDATA[[TestMethodBraceError14275350852303850617.java] Line 4 - Incorrect brace style in method declaration | Content: '  public void testMethod() '
+  <testcase name="testMethodBraceError" classname="com.example.locproject.utils.GoogleJavaFormatUtilTest" time="0.015">
+    <system-err><![CDATA[[TestMethodBraceError16221110054464409778.java] Line 4 - Incorrect brace style in method declaration | Content: '  public void testMethod() '
 ]]></system-err>
   </testcase>
-  <testcase name="testLineLengthError" classname="com.example.locproject.utils.GoogleJavaFormatUtilTest" time="0.014">
-    <system-err><![CDATA[[TestLineLengthError12004825931596483988.java] Line 3 - Exceeds 100 characters | Content: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+  <testcase name="testLineLengthError" classname="com.example.locproject.utils.GoogleJavaFormatUtilTest" time="0.01">
+    <system-err><![CDATA[[TestLineLengthError14786431855387033351.java] Line 3 - Exceeds 100 characters | Content: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
 ]]></system-err>
   </testcase>
-  <testcase name="testBraceError" classname="com.example.locproject.utils.GoogleJavaFormatUtilTest" time="0.011">
-    <system-err><![CDATA[[TestBraceError3065143362835534999.java] Line 3 - Incorrect brace style | Content: 'if (x > 0) { //'
+  <testcase name="testBraceError" classname="com.example.locproject.utils.GoogleJavaFormatUtilTest" time="0.007">
+    <system-err><![CDATA[[TestBraceError9287195626188241860.java] Line 3 - Incorrect brace style | Content: 'if (x > 0) { //'
 ]]></system-err>
   </testcase>
-  <testcase name="testIndentationError" classname="com.example.locproject.utils.GoogleJavaFormatUtilTest" time="0.011">
-    <system-err><![CDATA[[TestIndentationError10677580923381754755.java] Line 4 - Incorrect indentation | Content: '   System.out.println("Indentation error");'
+  <testcase name="testIndentationError" classname="com.example.locproject.utils.GoogleJavaFormatUtilTest" time="0.0">
+    <system-err><![CDATA[[TestIndentationError3681006153285501224.java] Line 4 - Incorrect indentation | Content: '   System.out.println("Indentation error");'
 ]]></system-err>
   </testcase>
-  <testcase name="testClassBraceError" classname="com.example.locproject.utils.GoogleJavaFormatUtilTest" time="0.017">
-    <system-err><![CDATA[[TestClassBraceError6428446295299477879.java] Line 3 - Incorrect brace style in class declaration | Content: 'public class TestClass'
+  <testcase name="testClassBraceError" classname="com.example.locproject.utils.GoogleJavaFormatUtilTest" time="0.015">
+    <system-err><![CDATA[[TestClassBraceError7352183288505809993.java] Line 3 - Incorrect brace style in class declaration | Content: 'public class TestClass'
 ]]></system-err>
   </testcase>
-  <testcase name="testValidFormat" classname="com.example.locproject.utils.GoogleJavaFormatUtilTest" time="0.009"/>
+  <testcase name="testValidFormat" classname="com.example.locproject.utils.GoogleJavaFormatUtilTest" time="0.016"/>
 </testsuite>
