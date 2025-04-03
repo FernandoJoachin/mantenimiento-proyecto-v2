@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.example.locproject.utils.GoogleJavaFormatUtilTest" time="0.645" tests="6" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.example.locproject.utils.GoogleJavaFormatUtilTest" time="0.108" tests="6" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,9 +15,8 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="MX"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-21\bin"/>
-    <property name="sun.java.command" value="C:\Users\Lenovo\AppData\Local\Temp\surefire12299689015335854946\surefirebooter-20250402233534147_3.jar C:\Users\Lenovo\AppData\Local\Temp\surefire12299689015335854946 2025-04-02T23-35-33_507-jvmRun1 surefire-20250402233534147_1tmp surefire_0-20250402233534147_2tmp"/>
+    <property name="sun.java.command" value="C:\Users\Lenovo\AppData\Local\Temp\surefire1388828404571447594\surefirebooter-20250403004123384_3.jar C:\Users\Lenovo\AppData\Local\Temp\surefire1388828404571447594 2025-04-03T00-41-20_874-jvmRun1 surefire-20250403004123384_1tmp surefire_0-20250403004123384_2tmp"/>
     <property name="jdk.debug" value="release"/>
-    <property name="test" value="GoogleJavaFormatUtilTest"/>
     <property name="surefire.test.class.path" value="C:\Users\Lenovo\Documents\OctavoSemestre\Mantenimiento\proyecto\mantenimiento-proyecto-v2\locproject\target\test-classes;C:\Users\Lenovo\Documents\OctavoSemestre\Mantenimiento\proyecto\mantenimiento-proyecto-v2\locproject\target\classes;C:\Users\Lenovo\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.7.2\junit-jupiter-api-5.7.2.jar;C:\Users\Lenovo\.m2\repository\org\apiguardian\apiguardian-api\1.1.0\apiguardian-api-1.1.0.jar;C:\Users\Lenovo\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\Lenovo\.m2\repository\org\junit\platform\junit-platform-commons\1.7.2\junit-platform-commons-1.7.2.jar;C:\Users\Lenovo\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.7.2\junit-jupiter-engine-5.7.2.jar;C:\Users\Lenovo\.m2\repository\org\junit\platform\junit-platform-engine\1.7.2\junit-platform-engine-1.7.2.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="user.home" value="C:\Users\Lenovo"/>
@@ -31,7 +30,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\Lenovo\AppData\Local\Temp\surefire12299689015335854946\surefirebooter-20250402233534147_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\Lenovo\AppData\Local\Temp\surefire1388828404571447594\surefirebooter-20250403004123384_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="21.0.6+8-LTS-188"/>
@@ -59,56 +58,25 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="65.0"/>
   </properties>
-  <testcase name="testMethodBraceError" classname="com.example.locproject.utils.GoogleJavaFormatUtilTest" time="0.382">
-    <system-out><![CDATA[package com.example;
-
-public class TestClass {
-public void testMethod()
-]]></system-out>
-    <system-err><![CDATA[[TestMethodBraceError17047162328216429915.java] Line 4 - Incorrect brace style in method declaration | Content: 'public void testMethod()'
+  <testcase name="testMethodBraceError" classname="com.example.locproject.utils.GoogleJavaFormatUtilTest" time="0.02">
+    <system-err><![CDATA[[TestMethodBraceError3741342831440479229.java] Line 4 - Incorrect brace style in method declaration | Content: 'public void testMethod()'
 ]]></system-err>
   </testcase>
-  <testcase name="testLineLengthError" classname="com.example.locproject.utils.GoogleJavaFormatUtilTest" time="0.035">
-    <system-out><![CDATA[package com.example;
-
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-]]></system-out>
-    <system-err><![CDATA[[TestLineLengthError12905653187579703674.java] Line 3 - Exceeds 100 characters | Content: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
+  <testcase name="testLineLengthError" classname="com.example.locproject.utils.GoogleJavaFormatUtilTest" time="0.01">
+    <system-err><![CDATA[[TestLineLengthError6273534026170551128.java] Line 3 - Exceeds 100 characters | Content: 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
 ]]></system-err>
   </testcase>
-  <testcase name="testBraceError" classname="com.example.locproject.utils.GoogleJavaFormatUtilTest" time="0.029">
-    <system-out><![CDATA[package com.example;
-
-if (x > 0) { int y = 5;
-]]></system-out>
-    <system-err><![CDATA[[TestBraceError8369592200365158873.java] Line 3 - Incorrect brace style | Content: 'if (x > 0) { int y = 5;'
+  <testcase name="testBraceError" classname="com.example.locproject.utils.GoogleJavaFormatUtilTest" time="0.009">
+    <system-err><![CDATA[[TestBraceError3527336499220308603.java] Line 3 - Incorrect brace style | Content: 'if (x > 0) { int y = 5;'
 ]]></system-err>
   </testcase>
-  <testcase name="testIndentationError" classname="com.example.locproject.utils.GoogleJavaFormatUtilTest" time="0.043">
-    <system-out><![CDATA[package com.example;
-
-public class TestClass {
-System.out.println( );
-]]></system-out>
-    <system-err><![CDATA[[TestIndentationError7859034889231135668.java] Line 4 - Incorrect indentation | Content: '   System.out.println("Indentation error");'
+  <testcase name="testIndentationError" classname="com.example.locproject.utils.GoogleJavaFormatUtilTest" time="0.016">
+    <system-err><![CDATA[[TestIndentationError15902537188904686059.java] Line 4 - Incorrect indentation | Content: '   System.out.println("Indentation error");'
 ]]></system-err>
   </testcase>
-  <testcase name="testClassBraceError" classname="com.example.locproject.utils.GoogleJavaFormatUtilTest" time="0.005">
-    <system-out><![CDATA[package com.example;
-
-public class TestClass
-]]></system-out>
-    <system-err><![CDATA[[TestClassBraceError18091885080826806493.java] Line 3 - Incorrect brace style in class declaration | Content: 'public class TestClass'
+  <testcase name="testClassBraceError" classname="com.example.locproject.utils.GoogleJavaFormatUtilTest" time="0.01">
+    <system-err><![CDATA[[TestClassBraceError13399341237866380470.java] Line 3 - Incorrect brace style in class declaration | Content: 'public class TestClass'
 ]]></system-err>
   </testcase>
-  <testcase name="testValidFormat" classname="com.example.locproject.utils.GoogleJavaFormatUtilTest" time="0.045">
-    <system-out><![CDATA[package com.example;
-
-public class TestClass {
-public void testMethod() {
-System.out.println( );
-}
-}
-]]></system-out>
-  </testcase>
+  <testcase name="testValidFormat" classname="com.example.locproject.utils.GoogleJavaFormatUtilTest" time="0.02"/>
 </testsuite>

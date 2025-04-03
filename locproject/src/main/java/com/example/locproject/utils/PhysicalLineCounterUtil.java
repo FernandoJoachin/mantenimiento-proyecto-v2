@@ -15,7 +15,8 @@ public class PhysicalLineCounterUtil extends Counter {
      */
     @Override
     public void count(String line) {
-        if (!this.commentValidator.isComment(line) & !line.trim().isEmpty()) {
+        String currentLine = this.commentAnalyzer.removeTrailingInlineComment(line);
+        if (!this.commentAnalyzer.isComment(currentLine) & !currentLine.trim().isEmpty()) {
             this.counter++;
         } 
     }

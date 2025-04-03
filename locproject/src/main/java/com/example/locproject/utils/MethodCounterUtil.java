@@ -17,7 +17,9 @@ public class MethodCounterUtil extends Counter {
      */
     @Override
     public void count(String line) {
-        if (!this.commentValidator.isComment(line) & isMethod(line)) {
+        String currentLine = this.commentAnalyzer.removeTrailingInlineComment(line);
+        //System.out.println(currentLine);
+        if (!this.commentAnalyzer.isComment(currentLine) & isMethod(currentLine)) {
             this.counter++;
         } 
     }

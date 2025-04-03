@@ -4,7 +4,6 @@ import com.example.locproject.constants.JavaRegexConstants;
 import com.example.locproject.constants.SymbolsConstants;
 import com.example.locproject.constants.FileFormatConstants;
 import com.example.locproject.exceptions.FileFormatException;
-import com.example.locproject.validators.CommentValidator;
 
 import java.io.File;
 import java.io.IOException;
@@ -75,23 +74,24 @@ public class GoogleJavaFormatUtil {
   private boolean validateFormat(List<String> lines, String fileName) throws FileFormatException {
     boolean isValid = true;
     boolean declarationFound = false;
-    CommentValidator commentValidator = new CommentValidator();
+    CommentAnalyzerUtil commentAnalyzer = new CommentAnalyzerUtil();
     for (int i = 0; i < lines.size(); i++) {
       String line = lines.get(i);
       int lineNumber = i + 1;
-      if (!commentValidator.isComment(line)) {
-        if (isClassInterfaceEnumDeclaration(line)) {
+      String currentLine = commentAnalyzer.removeTrailingInlineComment(line);
+      if (!commentAnalyzer.isComment(currentLine)) {
+        if (isClassInterfaceEnumDeclaration(currentLine)) {
           if (declarationFound) {
               throw new FileFormatException(fileName, lineNumber,
-                  FileFormatConstants.MULTIPLE_PUBLIC_CLASSES_MESSAGE, line);
+                FileFormatConstants.MULTIPLE_PUBLIC_CLASSES_MESSAGE, currentLine);
           }
           declarationFound = true;
         }
-        if (!validateBraceStyle(line, lineNumber, fileName) || 
-            !validateClassBraceStyle(line, lineNumber, fileName) ||
-            !validateMethodBraceStyle(line, lineNumber, fileName) || 
-            !validateLineLength(line, lineNumber, fileName) ||
-            !validateIndentation(line, lineNumber, fileName)) {
+        if (!validateBraceStyle(currentLine, lineNumber, fileName) || 
+            !validateClassBraceStyle(currentLine, lineNumber, fileName) ||
+            !validateMethodBraceStyle(currentLine, lineNumber, fileName) || 
+            !validateLineLength(currentLine, lineNumber, fileName) ||
+            !validateIndentation(currentLine, lineNumber, fileName)) {
           isValid = false;
         }
       }
@@ -120,13 +120,13 @@ public class GoogleJavaFormatUtil {
  * @return true if the line contains a public class declaration,
  *         false otherwise
  */
-private boolean isClassInterfaceEnumDeclaration(String line) {
-  String currentLine = deleteStringInsideCode(line);
-  Pattern publicClassPattern = Pattern.compile(
-    JavaRegexConstants.CLASS_INTERFACE_ENUM_DECLARATION_REGEX
-  );
-  return publicClassPattern.matcher(currentLine).find();
-}
+  private boolean isClassInterfaceEnumDeclaration(String line) {
+    String currentLine = deleteStringInsideCode(line);
+    Pattern publicClassPattern = Pattern.compile(
+      JavaRegexConstants.CLASS_INTERFACE_ENUM_DECLARATION_REGEX
+    );
+    return publicClassPattern.matcher(currentLine).find();
+  }
 
   /**
    * Validates the brace style for a given line.

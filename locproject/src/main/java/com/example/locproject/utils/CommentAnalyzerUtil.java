@@ -1,17 +1,27 @@
-package com.example.locproject.validators;
+package com.example.locproject.utils;
+
+import java.util.regex.Pattern;
+
+import com.example.locproject.constants.SymbolsConstants;
 
 /**
- * Validator class to identify a comment.
+ * Util class to identify a comment.
  * Provides functionality to determine whether
  * a given line of code is a comment in Java source code. It recognizes both
  * line comments (starting with //) and block comments (enclosed between /* and * /)..
  */
-public class CommentValidator {
+public class CommentAnalyzerUtil {
     /**
      * Regular expression to match line comments. A line comment starts with {@code //} and
      * can be preceded by whitespace characters.
      */
     private final String LINE_COMMENT_REGEX = "^\\s*//.*";
+    
+    /**
+     * Regular expression to remove trailing inline comments.
+     * Example: "// comment" -> ""
+     */
+    private static final String REMOVE_TRAILING_COMMENT_REGEX = "//.*$";
 
     /**
      * Regular expression to match the start of a block comment. A block comment starts with
@@ -48,5 +58,18 @@ public class CommentValidator {
         } else {
             return line.matches(LINE_COMMENT_REGEX);
         }
+    }
+
+    public String removeTrailingInlineComment(String line) {       
+        Pattern trailingInlineCommetPattern = Pattern.compile(
+            REMOVE_TRAILING_COMMENT_REGEX
+        );
+        if (trailingInlineCommetPattern.matcher(line).find()) {
+            return line.replaceAll(
+                REMOVE_TRAILING_COMMENT_REGEX,
+                SymbolsConstants.SPACE
+            ).trim();
+        }
+        return line;
     }
 }

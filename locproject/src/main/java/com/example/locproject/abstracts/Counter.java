@@ -1,6 +1,6 @@
 package com.example.locproject.abstracts;
 
-import com.example.locproject.validators.CommentValidator;
+import com.example.locproject.utils.CommentAnalyzerUtil;
 
 /**
  * Abstract class that defines the contract for counting lines of code.
@@ -16,7 +16,7 @@ public abstract class Counter {
     /**
      * Validator instance to handle comment-related logic.
      */
-    protected CommentValidator commentValidator = new CommentValidator();
+    protected CommentAnalyzerUtil commentAnalyzer = new CommentAnalyzerUtil();
 
     /**
      * Abstract method to count lines based on a given input line.
